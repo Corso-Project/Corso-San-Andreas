@@ -7,3 +7,6 @@
 # Pawn
 *.pwn diff=pawn
 *.inc diff=pawn
+
+*.pwn linguist-language=Pawn
+*.inc linguist-language=Pawn
