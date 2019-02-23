@@ -1,4 +1,4 @@
-#define GAMEMODE_VERSION	"San Andreas v0.0.1"
+#define GAMEMODE_VERSION	"San Andreas v 0.0.1"
 #define SERVER_NAME			"Corso San Andreas"
 
 enum {
