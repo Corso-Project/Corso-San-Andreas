@@ -3,6 +3,8 @@
 #define FIXES_ServerVarMsg 0
 #include <lib\fixes>
 
+#include <lib\a_zone>
+
 #include <lib\mdialog>
 #include <lib\a_mysql>
 #include <lib\foreach>

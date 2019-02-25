@@ -81,6 +81,10 @@ public OnPlayerDisconnect(playerid, reason) {
     return true;
 }
 public OnPlayerSpawn(playerid) {
+	for(new i; i < sizeof GangZonesIDs; i++) {
+		ShowZoneForPlayer(playerid, GangZonesIDs[i], GangZonesColors[random(sizeof GangZonesColors)]);
+		CreateZoneBorders(GangZonesIDs[i]);
+	}
     return true;
 }
 public OnPlayerDeath(playerid, killerid, reason) {

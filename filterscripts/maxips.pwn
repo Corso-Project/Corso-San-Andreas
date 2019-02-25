@@ -3,7 +3,7 @@
 
 #include <a_samp>
 
-#define MAX_CONNECTIONS_FROM_IP     3
+#define MAX_CONNECTIONS_FROM_IP     1
 
 //---------------------------------------------
 
@@ -38,7 +38,7 @@ public OnPlayerConnect(playerid)
 	new connecting_ip[32+1];
 	GetPlayerIp(playerid,connecting_ip,32);
 	new num_players_on_ip = GetNumberOfPlayersOnThisIP(connecting_ip);
-	
+
 	if(num_players_on_ip > MAX_CONNECTIONS_FROM_IP) {
 		printf("MAXIPs: Connecting player(%d) exceeded %d IP connections from %s.", playerid, MAX_CONNECTIONS_FROM_IP, connecting_ip);
 	    Kick(playerid);
@@ -47,6 +47,5 @@ public OnPlayerConnect(playerid)
 
 	return 0;
 }
-	
+
 //---------------------------------------------
-	    
