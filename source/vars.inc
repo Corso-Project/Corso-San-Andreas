@@ -24,7 +24,9 @@ enum E_PLAYER_DATA
 	p_sex,
 
 	p_reg_date[32],
-	p_reg_ip[46]
+	p_reg_ip[46],
+
+	p_last_pos[45]
 };
 new P[MAX_PLAYERS][E_PLAYER_DATA];
 

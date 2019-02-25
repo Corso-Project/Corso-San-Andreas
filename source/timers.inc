@@ -20,6 +20,8 @@ public AutoTimer(playerid) {
     orm_addvar_string(ormid, P[playerid][p_reg_date], 32, "Reg_Date");
     orm_addvar_string(ormid, P[playerid][p_reg_ip], 46, "Reg_IP");
 
+    orm_addvar_string(ormid, P[playerid][p_last_pos], 45, "Last_Pos");
+
     orm_setkey(ormid, "Name");
     orm_select(ormid, "OnMySQL_SelectAccount", "i", playerid);
 }

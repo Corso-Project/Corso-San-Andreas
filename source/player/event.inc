@@ -1,6 +1,16 @@
 public OnPlayerRequestClass(playerid, classid) {
 	if (P[playerid][_p_in_game] == true) {
-		SetSpawnInfo(playerid, 0, P[playerid][p_skin], 1642.4329,-2239.0205,13.4967, 180.0, 0,0,0,0,0,0);
+		new Float: x,
+			Float: y,
+			Float: z,
+			Float: Angle;
+		sscanf(P[playerid][p_last_pos], "p<,>ffff", x, y, z, Angle);
+		if (x != 0 && y != 0 && z != 0) {
+			SetSpawnInfo(playerid, 0, P[playerid][p_skin], x, y, z, Angle, 0,0,0,0,0,0);
+			// SetPlayerFacingAngle(playerid, Angle);
+		} else {
+			SetSpawnInfo(playerid, 0, P[playerid][p_skin], 1642.4329,-2239.0205,13.4967, 180.0, 0,0,0,0,0,0);
+		}
         SetPlayerInterior(playerid, 0);
 		SetPlayerVirtualWorld(playerid, 0);
         SpawnPlayer(playerid);
@@ -73,6 +83,12 @@ public OnPlayerConnect(playerid) {
 public OnPlayerDisconnect(playerid, reason) {
 	if (P[playerid][_p_ormid]) {
 	    if (P[playerid][_p_in_game] == true) {
+			new Float:x, Float:y, Float:z, Float: Angle;
+        	GetPlayerPos(playerid, x, y, z);
+        	printf("Your current coordinate location is %f, %f, %f.", x, y, z);
+			GetPlayerFacingAngle(playerid, Angle);
+			format(P[playerid][p_last_pos], 45, "%f, %f, %f, %0.2f", x, y, z, Angle);
+			printf("Angle: %0.2f", Angle);
 			orm_update(P[playerid][_p_ormid]);
 	    }
 	    orm_destroy(P[playerid][_p_ormid]);
