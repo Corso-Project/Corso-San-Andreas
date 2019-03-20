@@ -3,6 +3,7 @@ public OnGameModeInit() {
 	//Подключения к MySQL
 	mysql_log(ALL);
 	g_MySQL_DB = mysql_connect(g_MySQL_Host,g_MySQL_User,g_MySQL_Password,g_MySQL_Database);
+    mysql_set_charset("cp1251");
 	if(mysql_errno() != 0) {
 	    print("\n[Ошибка]: Внимание! Подключение к базе данных MySQL не установлено.\n");
 		SendRconCommand("exit");
@@ -16,6 +17,12 @@ public OnGameModeInit() {
 	ShowNameTags(1);
     // DisableNameTagLOS();
 	UsePlayerPedAnims();
+    new start_year, start_month, start_day, start_hour, start_minute, start_second;
+    new time = gettime();
+    gmtime(time, start_year, start_month, start_day, start_hour, start_minute, start_second);
+    SetWorldTime(start_hour+2);
+    printf("s %i", start_hour+2);
+
 	// Selection
 		//male
 	AddPlayerClass(230, 0,0,0,0, 0,0,0,0,0,0);
@@ -215,10 +222,12 @@ public OnGameModeInit() {
 		CreateZoneBorders(GangZonesIDs[i]);
 	}
 
-    SetTimer("UpdateTime", 1000, false);
+    WeatherChanger();
+    weatherTimer = SetTimer("WeatherChanger", randomEx(1500000, 3600000), true);
     return true;
 }
 public OnGameModeExit() {
+    KillTimer(weatherTimer);
     mysql_close();
 	return 1;
 }

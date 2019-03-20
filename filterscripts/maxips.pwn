@@ -17,7 +17,7 @@ public OnFilterScriptInit()
 // Returns the number of players connecting from the
 // provided IP address
 
-stock GetNumberOfPlayersOnThisIP(test_ip[])
+stock GetNumberOfPlayersOnThisIP(const test_ip[])
 {
 	new against_ip[32+1];
 	new x = 0;

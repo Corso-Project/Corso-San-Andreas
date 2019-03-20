@@ -25,6 +25,7 @@ enum E_PLAYER_DATA
 
 	p_reg_date[32],
 	p_reg_ip[46],
+	p_last_ip[46],
 
 	p_last_pos[45]
 };
@@ -37,7 +38,8 @@ new g_MySQL_Host[46],
 	g_MySQL_Password[46],
 	MySQL: g_MySQL_DB;
 // Timers
-new connect_player_wait[MAX_PLAYERS];
+new connect_player_wait[MAX_PLAYERS],
+	weatherTimer;
 
 // All
 new Float: CamerasRand[5][6] = {

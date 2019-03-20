@@ -127,7 +127,7 @@ public OnPlayerUpdate(playerid)
 stock GetMoveDirectionFromKeys(ud, lr)
 {
 	new direction = 0;
-	
+
     if(lr < 0)
 	{
 		if(ud < 0) 		direction = MOVE_FORWARD_LEFT; 	// Up & Left key pressed
@@ -142,7 +142,7 @@ stock GetMoveDirectionFromKeys(ud, lr)
 	}
 	else if(ud < 0) 	direction = MOVE_FORWARD; 	// Up key pressed
 	else if(ud > 0) 	direction = MOVE_BACK;		// Down key pressed
-	
+
 	return direction;
 }
 
@@ -172,7 +172,7 @@ stock MoveCamera(playerid)
 
 //--------------------------------------------------
 
-stock GetNextCameraPosition(move_mode, Float:CP[3], Float:FV[3], &Float:X, &Float:Y, &Float:Z)
+stock GetNextCameraPosition(move_mode, const Float:CP[3], const Float:FV[3], &Float:X, &Float:Y, &Float:Z)
 {
     // Calculate the cameras next position based on their current position and the direction their camera is facing
     #define OFFSET_X (FV[0]*6000.0)

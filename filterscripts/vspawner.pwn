@@ -97,7 +97,7 @@ PlayerText:CreatePlayerDialogButton(playerid, Float:Xpos, Float:Ypos, Float:Widt
     PlayerTextDrawShow(playerid, txtInit);
     return txtInit;
 }
- 
+
 //------------------------------------------------
 
 PlayerText:CreatePlayerHeaderTextDraw(playerid, Float:Xpos, Float:Ypos, header_text[])
@@ -172,9 +172,9 @@ ShowPlayerModelPreviews(playerid)
 	new Float:BaseX = DIALOG_BASE_X;
 	new Float:BaseY = DIALOG_BASE_Y - (SPRITE_DIM_Y * 0.33); // down a bit
 	new linetracker = 0;
-	
+
 	new itemat = GetPVarInt(playerid, "vspawner_page") * SELECTION_ITEMS;
-	
+
 	// Destroy any previous ones created
 	DestroyPlayerModelPreviews(playerid);
 
@@ -248,7 +248,7 @@ SpawnVehicle_InfrontOfPlayer(playerid, vehiclemodel, color1, color2)
 
     new Float:size_x,Float:size_y,Float:size_z;
 	GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO_SIZE, size_x, size_y, size_z);
-	
+
 	distance = size_x + 0.5;
 
   	x += (distance * floatsin(-facing, degrees));
@@ -278,13 +278,13 @@ public OnPlayerConnect(playerid)
     gCurrentPageTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
     gNextButtonTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
     gPrevButtonTextDrawId[playerid] = PlayerText:INVALID_TEXT_DRAW;
-    
+
     for(new x=0; x < SELECTION_ITEMS; x++) {
         gSelectionItems[playerid][x] = PlayerText:INVALID_TEXT_DRAW;
 	}
-	
+
 	gItemAt[playerid] = 0;
-	
+
 	return 1; // Allow other scripts to keep processing OnPlayerConnect
 }
 
@@ -303,7 +303,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
         PlayerPlaySound(playerid, 1085, 0.0, 0.0, 0.0);
         return 1;
 	}
-	
+
 	return 0;
 }
 
@@ -314,7 +314,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 	if(GetPVarInt(playerid, "vspawner_active") == 0) return 0;
 
 	new curpage = GetPVarInt(playerid, "vspawner_page");
-	
+
 	// Handle: next button
 	if(playertextid == gNextButtonTextDrawId[playerid]) {
 	    if(curpage < (GetNumberOfPages() - 1)) {
@@ -327,7 +327,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		}
 		return 1;
 	}
-	
+
 	// Handle: previous button
 	if(playertextid == gPrevButtonTextDrawId[playerid]) {
 	    if(curpage > 0) {
@@ -340,7 +340,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		}
 		return 1;
 	}
-	
+
 	// Search in the array of textdraws used for the items
 	new x=0;
 	while(x != SELECTION_ITEMS) {
@@ -354,7 +354,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		}
 		x++;
 	}
-	
+
 	return 0;
 }
 
@@ -366,22 +366,22 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	new	idx;
 
 	if(!IsPlayerAdmin(playerid)) return 0;
-	
+
 	cmd = strtok(cmdtext, idx);
 
 	if(strcmp("/vspawner", cmd, true) == 0)
 	{
  		// If there was a previously created selection menu, destroy it
 		DestroySelectionMenu(playerid);
-		
+
 	    SetPVarInt(playerid, "vspawner_active", 1);
 	    //SetPVarInt(playerid, "vspawner_page", 0); // will reset the page back to the first
-	    
+
 	    CreateSelectionMenu(playerid);
 	    SelectTextDraw(playerid, 0xACCBF1FF);
 	    return 1;
 	}
-	
+
 	return 0;
 }
 //------------------------------------------------

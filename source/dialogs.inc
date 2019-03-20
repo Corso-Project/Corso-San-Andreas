@@ -11,8 +11,14 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
 		if(strcmp(P[playerid][p_password], inputtext, false) != 0) return SendClientMessage(playerid, -1, "Неправильынй пароль.");
 	}
     P[playerid][_p_in_game] = true;
+    GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
 	TogglePlayerSpectating(playerid, 0);
-	//Cash_Set(playerid, P[playerid][p_cash]);
+    if (P[playerid][p_access] > 1) {
+        new string[37+1+1];
+        format(string, sizeof(string), "Вы вошли как администратор %i уровня.", P[playerid][p_access]);
+        SendClientMessage(playerid, -1, string);
+    }
+    orm_update(P[playerid][_p_ormid]);
     return true;
 }
 
@@ -30,6 +36,7 @@ DialogResponse:d_user_register(playerid, response, listitem, inputtext[]) {
 	}
 	format(P[playerid][p_password], 18, inputtext);
 	GetPlayerIp(playerid, P[playerid][p_reg_ip], 46);
+    GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
     Dialog_Show(playerid, Dialog:d_user_select_gender);
 	return true;
 }

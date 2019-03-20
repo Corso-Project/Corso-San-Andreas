@@ -8,6 +8,7 @@
 #include <lib\mdialog>
 #include <lib\a_mysql>
 #include <lib\foreach>
+#include <lib\kick>
 #include <lib\mxdate>
 #include <lib\mxINI>
 #include <lib\Pawn.CMD>
@@ -20,7 +21,9 @@
 
 #include "..\source\vars.inc"
 
-main() { }
+main() {
+    
+}
 
 #include "..\source\freader.inc"
 

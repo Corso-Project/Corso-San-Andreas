@@ -19,9 +19,20 @@ public AutoTimer(playerid) {
 
     orm_addvar_string(ormid, P[playerid][p_reg_date], 32, "Reg_Date");
     orm_addvar_string(ormid, P[playerid][p_reg_ip], 46, "Reg_IP");
+    orm_addvar_string(ormid, P[playerid][p_last_ip], 46, "Last_IP");
 
     orm_addvar_string(ormid, P[playerid][p_last_pos], 45, "Last_Pos");
 
     orm_setkey(ormid, "Name");
     orm_select(ormid, "OnMySQL_SelectAccount", "i", playerid);
+}
+
+forward WeatherChanger();
+public WeatherChanger()
+{
+    // new rand = random(10);
+    SetWeather(randomEx(0, 20));
+    SendClientMessageToAll(-1, "Погода изменилась!");
+    printf("Погода изменилась!");
+    return 1;
 }
