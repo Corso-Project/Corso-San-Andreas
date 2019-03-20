@@ -22,6 +22,8 @@ enum E_PLAYER_DATA
 	p_cash,
 	p_skin,
 	p_sex,
+	Float: p_health,
+	Float: p_armour,
 
 	p_reg_date[32],
 	p_reg_ip[46],

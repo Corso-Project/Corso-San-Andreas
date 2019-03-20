@@ -16,6 +16,9 @@ public OnPlayerRequestClass(playerid, classid) {
         SpawnPlayer(playerid);
 		PlayerPlaySound(playerid, 1069, 0.0, 0.0, 0.0);
 		printf("OnPlayerRequestSpawn");
+		printf("log health: %f", P[playerid][p_health]);
+		SetPlayerHealth(playerid, P[playerid][p_health]);
+		SetPlayerArmour(playerid, P[playerid][p_armour]);
 	} else{
 		SetPlayerInterior(playerid, 0);
 		SetPlayerPos(playerid,1984.4445,157.9501,55.9384);
@@ -88,6 +91,13 @@ public OnPlayerDisconnect(playerid, reason) {
         	printf("Your current coordinate location is %f, %f, %f.", x, y, z);
 			GetPlayerFacingAngle(playerid, Angle);
 			format(P[playerid][p_last_pos], 45, "%f, %f, %f, %0.2f", x, y, z, Angle);
+
+			new Float: Health, Float: Armour;
+    		GetPlayerHealth(playerid, P[playerid][p_health]);
+			GetPlayerArmour(playerid, P[playerid][p_armour]);
+			printf("exit health: %f", P[playerid][p_health]);
+
+			printf("Health: %.2f | Armour: %.2f", Health, Armour);
 			printf("Angle: %0.2f", Angle);
 			orm_update(P[playerid][_p_ormid]);
 	    }
@@ -113,4 +123,3 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	return true;
 }
-/// я так поч пваоп лва плваол пваол полвао плвао плвао плвао лпвоал повал полвао плвао плваол
