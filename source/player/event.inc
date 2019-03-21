@@ -13,15 +13,12 @@ public OnPlayerRequestClass(playerid, classid) {
 			}
 		} else {
 			SetSpawnInfo(playerid, 0, P[playerid][p_skin], 1642.4329,-2239.0205,13.4967, 180.0, 0,0,0,0,0,0);
-
-			SendClientMessage(playerid, -1, "Сохранения последней точки выхода отключена.");
 		}
         SetPlayerInterior(playerid, 0);
 		SetPlayerVirtualWorld(playerid, 0);
         SpawnPlayer(playerid);
 		PlayerPlaySound(playerid, 1069, 0.0, 0.0, 0.0);
-		printf("OnPlayerRequestSpawn");
-		printf("log health: %f", P[playerid][p_health]);
+
 		SetPlayerHealth(playerid, P[playerid][p_health]);
 		SetPlayerArmour(playerid, P[playerid][p_armour]);
 	} else{
@@ -75,9 +72,6 @@ public OnPlayerRequestSpawn(playerid) {
 		P[playerid][p_sex] = 0;
 	else P[playerid][p_sex] = 1;
 	P[playerid][p_reg_date] = string_date;
-	printf(string_date);
-	printf(P[playerid][p_reg_date]);
-	printf(P[playerid][p_reg_ip]);
 
 	orm_insert(P[playerid][_p_ormid], "OnMySQL_InsertAccount", "d", playerid);
     return true;

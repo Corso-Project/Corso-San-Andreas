@@ -15,7 +15,7 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
 	TogglePlayerSpectating(playerid, 0);
 
     sscanf(P[playerid][p_settings], "p<,>i", P[playerid][p_saveLastPos]);
-    printf("savePos %i", P[playerid][p_saveLastPos]);
+
     if (P[playerid][p_access] > 1) {
         new string[37+1+1];
         format(string, sizeof(string), "Вы вошли как администратор %i уровня.", P[playerid][p_access]);
@@ -65,10 +65,20 @@ DialogCreate:d_user_menu(playerid) {
 DialogResponse:d_user_menu(playerid, response, listitem, inputtext[]) {
     if (!response) return true;
     switch(listitem) {
-        case 0: SendClientMessage(playerid, -1, "Stats");
+        case 0: Dialog_Show(playerid, Dialog:d_user_stats);
         case 1: Dialog_Show(playerid, Dialog:d_user_settings);
     }
     return true;
+}
+
+DialogCreate:d_user_stats(playerid){
+	Show_Stats(playerid, playerid);
+}
+DialogResponse:d_player_stats(playerid, response, listitem, inputtext[]){
+	if(!response)
+		return Dialog_Show(playerid, Dialog: d_user_menu);
+    else if(response) return Dialog_Show(playerid, Dialog: d_user_menu);
+	return true;
 }
 
 DialogCreate:d_user_settings(playerid) {
@@ -86,7 +96,6 @@ DialogResponse:d_user_settings(playerid, response, listitem, inputtext[]) {
     		else if(P[playerid][p_saveLastPos] == 1)
     			P[playerid][p_saveLastPos] = 0;
         }
-        case 1: SendClientMessage(playerid, -1, "Settings");
     }
     Update_PlayerSettings(playerid);
     return true;

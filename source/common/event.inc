@@ -21,7 +21,6 @@ public OnGameModeInit() {
     new time = gettime();
     gmtime(time, start_year, start_month, start_day, start_hour, start_minute, start_second);
     SetWorldTime(start_hour+2);
-    printf("s %i", start_hour+2);
 
 	// Selection
 		//male
