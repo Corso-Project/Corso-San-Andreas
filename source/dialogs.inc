@@ -13,6 +13,9 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
     P[playerid][_p_in_game] = true;
     GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
 	TogglePlayerSpectating(playerid, 0);
+
+    sscanf(P[playerid][p_settings], "p<,>i", P[playerid][p_saveLastPos]);
+    printf("savePos %i", P[playerid][p_saveLastPos]);
     if (P[playerid][p_access] > 1) {
         new string[37+1+1];
         format(string, sizeof(string), "Вы вошли как администратор %i уровня.", P[playerid][p_access]);
@@ -37,6 +40,11 @@ DialogResponse:d_user_register(playerid, response, listitem, inputtext[]) {
 	format(P[playerid][p_password], 18, inputtext);
 	GetPlayerIp(playerid, P[playerid][p_reg_ip], 46);
     GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
+
+    sscanf(P[playerid][p_settings], "p<,>i", P[playerid][p_saveLastPos]);
+    P[playerid][p_saveLastPos] = 1;
+    format(P[playerid][p_settings], 10, "%i", P[playerid][p_saveLastPos]);
+
     Dialog_Show(playerid, Dialog:d_user_select_gender);
 	return true;
 }
@@ -48,5 +56,38 @@ DialogResponse:d_user_select_gender(playerid, response, listitem, inputtext[]) {
     if(!response) return SetPVarInt(playerid, "Gender", 2), TogglePlayerSpectating(playerid, 0); //female
     SetPVarInt(playerid, "Gender", 1); // male
     TogglePlayerSpectating(playerid, 0);
+    return true;
+}
+
+DialogCreate:d_user_menu(playerid) {
+    Dialog_Open(playerid, Dialog:d_user_menu, DIALOG_STYLE_LIST, "Меню", "1. Статистика\n2. Настройки", "Выбрать", "");
+}
+DialogResponse:d_user_menu(playerid, response, listitem, inputtext[]) {
+    if (!response) return true;
+    switch(listitem) {
+        case 0: SendClientMessage(playerid, -1, "Stats");
+        case 1: Dialog_Show(playerid, Dialog:d_user_settings);
+    }
+    return true;
+}
+
+DialogCreate:d_user_settings(playerid) {
+    new dialogFormat[255];
+    format(dialogFormat, sizeof(dialogFormat), "{FFFFFF}Настройка\t \t{FFFFFF}Статус\n\
+    Сохранения позиции при выходе\t \t%s\n", P[playerid][p_saveLastPos] == 1 ? ("{1CF50D}Вкл.") : ("{FF0000}Выкл."));
+    Dialog_Open(playerid, Dialog:d_user_settings, DIALOG_STYLE_TABLIST_HEADERS, "Настройки", dialogFormat, "Выбрать", "Назад");
+}
+DialogResponse:d_user_settings(playerid, response, listitem, inputtext[]) {
+    if (!response) return Dialog_Show(playerid, Dialog:d_user_menu);
+    switch(listitem) {
+        case 0: {
+            if(P[playerid][p_saveLastPos] == 0)
+    			P[playerid][p_saveLastPos] = 1;
+    		else if(P[playerid][p_saveLastPos] == 1)
+    			P[playerid][p_saveLastPos] = 0;
+        }
+        case 1: SendClientMessage(playerid, -1, "Settings");
+    }
+    Update_PlayerSettings(playerid);
     return true;
 }

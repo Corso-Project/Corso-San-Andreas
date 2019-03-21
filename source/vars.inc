@@ -1,4 +1,4 @@
-#define GAMEMODE_VERSION	"San Andreas v 0.0.1"
+#define GAMEMODE_VERSION	"San Andreas v 0.0.2"
 #define SERVER_NAME			"Corso San Andreas"
 
 enum {
@@ -28,6 +28,10 @@ enum E_PLAYER_DATA
 	p_reg_date[32],
 	p_reg_ip[46],
 	p_last_ip[46],
+
+	// settings
+	p_settings[10],
+	p_saveLastPos,
 
 	p_last_pos[45]
 };
