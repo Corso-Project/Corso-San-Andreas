@@ -78,6 +78,7 @@ public OnPlayerRequestSpawn(playerid) {
 }
 public OnPlayerConnect(playerid) {
 	TogglePlayerSpectating(playerid, 1);
+	SetPlayerTime(playerid, Hour, Minute);
 	Dialog_Message(playerid, "Загрузка...","{FFFFFF}Мы рады вас видеть на нашем сервере {b3f9b0}", "Ok");
     connect_player_wait[playerid] = SetTimerEx("AutoTimer", 3000, true, "i", playerid);
     return true;

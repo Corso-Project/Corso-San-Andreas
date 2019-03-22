@@ -1,6 +1,10 @@
 #define GAMEMODE_VERSION	"San Andreas v 0.0.2"
 #define SERVER_NAME			"Corso San Andreas"
 
+new // Year = 1992,
+	Hour = 0,
+	Minute = 0;
+
 enum {
 	SEX_FEMALE,
 	SEX_MALE
@@ -45,7 +49,8 @@ new g_MySQL_Host[46],
 	MySQL: g_MySQL_DB;
 // Timers
 new connect_player_wait[MAX_PLAYERS],
-	weatherTimer;
+	weatherTimer,
+	customtimeTimer;
 
 // All
 new Float: CamerasRand[5][6] = {

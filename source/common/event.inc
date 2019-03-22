@@ -17,10 +17,10 @@ public OnGameModeInit() {
 	ShowNameTags(1);
     // DisableNameTagLOS();
 	UsePlayerPedAnims();
-    new start_year, start_month, start_day, start_hour, start_minute, start_second;
+    /* new start_year, start_month, start_day, start_hour, start_minute, start_second;
     new time = gettime();
     gmtime(time, start_year, start_month, start_day, start_hour, start_minute, start_second);
-    SetWorldTime(start_hour+2);
+    SetWorldTime(start_hour+2); */
 
 	// Selection
 		//male
@@ -223,10 +223,12 @@ public OnGameModeInit() {
 
     WeatherChanger();
     weatherTimer = SetTimer("WeatherChanger", randomEx(1500000, 3600000), true);
+    customtimeTimer = SetTimer("CustomTimeTimer", 1000, true);
     return true;
 }
 public OnGameModeExit() {
     KillTimer(weatherTimer);
+    KillTimer(customtimeTimer);
     mysql_close();
 	return 1;
 }

@@ -33,11 +33,28 @@ public AutoTimer(playerid) {
 }
 
 forward WeatherChanger();
-public WeatherChanger()
-{
-    // new rand = random(10);
+public WeatherChanger() {
     SetWeather(randomEx(0, 20));
     SendClientMessageToAll(-1, "Погода изменилась!");
     printf("Погода изменилась!");
     return 1;
+}
+forward CustomTimeTimer();
+public CustomTimeTimer(){
+    if (Minute >= 60) {
+        Hour += 1;
+        if (Hour >= 24) {
+            Hour = 0;
+        }
+        Minute = 0;
+    } else {
+        Minute += 1;
+    }
+
+    new string[30];
+    format(string, sizeof(string), "Время сменилось: %i:%i", Hour, Minute);
+    foreach (new playerid : Player) {
+        SetPlayerTime(playerid, Hour, Minute);
+        SendClientMessage(playerid, -1, string);
+    }
 }
