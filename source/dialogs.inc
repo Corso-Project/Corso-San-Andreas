@@ -18,7 +18,7 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
 
     if (P[playerid][p_access] > 1) {
         new string[37+1+1];
-        format(string, sizeof(string), "Вы вошли как администратор %i уровня.", P[playerid][p_access]);
+        format(string, sizeof(string), "Вы вошли как администратор %i уровня. ->", P[playerid][p_access]);
         SendClientMessage(playerid, -1, string);
     }
     orm_update(P[playerid][_p_ormid]);
