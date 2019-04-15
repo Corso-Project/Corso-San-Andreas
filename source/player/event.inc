@@ -22,7 +22,7 @@ public OnPlayerRequestClass(playerid, classid) {
 		SetPlayerHealth(playerid, P[playerid][p_health]);
 		SetPlayerArmour(playerid, P[playerid][p_armour]);
 		P[playerid][_p_spawned] = true;
-	} else{
+	} else {
 		SetPlayerInterior(playerid, 0);
 		SetPlayerPos(playerid,1984.4445,157.9501,55.9384);
 		SetPlayerFacingAngle(playerid,0.0);
@@ -54,6 +54,7 @@ public OnPlayerRequestClass(playerid, classid) {
 				case 5: SetPlayerSkin(playerid, 77);
 			}
 		}
+		P[playerid][_p_spawned] = true;
 	}
 	SendClientMessage(playerid, -1, "OnPlayerRequestClass");
 	return true;
@@ -87,6 +88,7 @@ public OnPlayerConnect(playerid) {
 }
 public OnPlayerDisconnect(playerid, reason) {
 	if (P[playerid][_p_ormid]) {
+		printf("Δενόγθ: %i",  GetPlayerMoney(playerid));
 	    if (P[playerid][_p_in_game] == true) {
 			if (P[playerid][p_saveLastPos] == 1) {
 				new Float:x, Float:y, Float:z, Float: Angle;
@@ -98,7 +100,7 @@ public OnPlayerDisconnect(playerid, reason) {
 			// new Float: Health, Float: Armour;
     		GetPlayerHealth(playerid, P[playerid][p_health]);
 			GetPlayerArmour(playerid, P[playerid][p_armour]);
-
+			P[playerid][p_cash] = GetPlayerMoney(playerid);
 			orm_update(P[playerid][_p_ormid]);
 	    }
 	    orm_destroy(P[playerid][_p_ormid]);

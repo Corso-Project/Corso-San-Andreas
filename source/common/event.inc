@@ -1,11 +1,11 @@
 public OnGameModeInit() {
     Load_MySQL();
-	//РџРѕРґРєР»СЋС‡РµРЅРёСЏ Рє MySQL
+	//Подключения к MySQL
 	mysql_log(ALL);
 	g_MySQL_DB = mysql_connect(g_MySQL_Host,g_MySQL_User,g_MySQL_Password,g_MySQL_Database);
     mysql_set_charset("cp1251");
 	if(mysql_errno() != 0) {
-	    print("\n[РћС€РёР±РєР°]: Р’РЅРёРјР°РЅРёРµ! РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С… MySQL РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ.\n");
+	    print("\n[Ошибка]: Внимание! Подключение к базе данных MySQL не установлено.\n");
 		SendRconCommand("exit");
 	    return 0;
 	}
@@ -51,7 +51,7 @@ public OnGameModeInit() {
     Vehicle_LoadFromFile("vehicles/tierra.txt");
     Vehicle_LoadFromFile("vehicles/whetstone.txt");
 
-    // РђРјРјСѓРЅР°С†РёСЏ
+    // Аммунация
     CreateDynamicMapIcon(1372.9, -1278.8, 12.5, 6, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(2400.5, -1978.4, 13.5, 6, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(-2626.6, 209.4, 4.9, 6, 0xFFFFFFFF, -1,-1,-1, 1000);
@@ -64,7 +64,7 @@ public OnGameModeInit() {
     CreateDynamicMapIcon(-315.67, 829.87, 13.43, 6, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(2332.9, 63.6, 31.0, 6, 0xFFFFFFFF, -1,-1,-1, 1000);
 
-    // Р‘СѓСЂРіРµСЂС€РѕС‚
+    // Бургершот
     CreateDynamicMapIcon(812.9, -1616.1, 13.6, 10, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(1199.1, -924.0, 43.3, 10, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(2362.2, 2069.9, 10.8, 10, 0xFFFFFFFF, -1,-1,-1, 1000);

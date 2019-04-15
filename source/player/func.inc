@@ -49,3 +49,9 @@ stock respawnAtHospital(playerid) {
 	SetPlayerFacingAngle(playerid, hospitalCoords[min_id][3]);
 	SetCameraBehindPlayer(playerid);
 }
+stock Cash_Give(playerid, money)
+{
+    P[playerid][p_cash] += money;  
+    ResetPlayerMoney(playerid);
+    GivePlayerMoney(playerid, P[playerid][p_cash]);
+}

@@ -13,6 +13,7 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
     P[playerid][_p_in_game] = true;
     GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
 	TogglePlayerSpectating(playerid, 0);
+    GivePlayerMoney(playerid, P[playerid][p_cash]);
 
     sscanf(P[playerid][p_settings], "p<,>i", P[playerid][p_saveLastPos]);
 
