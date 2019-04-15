@@ -1,2 +1,9 @@
-*.amx
-*.amx
+gamemodes/*.amx
+filterscripts/*.amx
+plugins
+logs
+*.dll
+*.txt
+*.exe
+pawno/*.pdb
+server.cfg

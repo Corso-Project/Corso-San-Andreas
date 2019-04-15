@@ -129,3 +129,7 @@ CMD:baninfo(playerid, params[]){
 	mysql_tquery(g_MySQL_DB, query, "OnMySQL_GetBanInfo", "isi", playerid, target, strval(target));
 	return true;
 }
+
+CMD:test(playerid, params[]) {
+	respawnAtHospital(playerid);
+}

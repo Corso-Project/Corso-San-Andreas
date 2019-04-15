@@ -88,8 +88,6 @@ public OnGameModeInit() {
     CreateDynamicMapIcon(-1216.0, 1831.4, 45.3, 14, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(172.73, 1176.76, 13.7, 14, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(932.0, -1353.0, 14.0, 14, 0xFFFFFFFF, -1,-1,-1, 1000);
-    // C.R.A.S.H
-    CreateDynamicMapIcon(1042.85, -1338.62, 12.55, 16, 0xFFFFFFFF, -1,-1,-1, 1000);
     // Diner
     CreateDynamicMapIcon(2862.0, -1439.0, 10.0, 17, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(384.6615, -1819.529, 6.8414, 17, 0xFFFFFFFF, -1,-1,-1, 1000);
@@ -102,6 +100,15 @@ public OnGameModeInit() {
     CreateDynamicMapIcon(-53.867, 1189.297, 18.414, 17, 0xFFFFFFFF, -1,-1,-1, 1000);
     // Marker_Emmets_Gun
     CreateDynamicMapIcon(2447.364, -1974.496, 12.5469, 18, 0xFFFFFFFF, -1,-1,-1, 1000);
+    // Hospital
+    CreateDynamicMapIcon(1178.62330, -1323.8820, 14.1292, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(2034.24260, -1414.6997, 16.9922, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(-2200.5435, -2310.4019, 30.6250, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(-316.22600, 1055.19190, 19.7422, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(1243.31880, 329.896100, 19.7578, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(1876.10530, 2238.56520, 11.1250, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(1606.86690, 1822.86160, 10.8203, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
+    CreateDynamicMapIcon(-2658.1619, 631.018000, 14.4531, 22, 0xFFFFFFFF, -1,-1,-1, 1000);
     // Trans Fender
     CreateDynamicMapIcon(-2728.5, 212.2, 3.4, 27, 0xFFFFFFFF, -1,-1,-1, 1000);
     CreateDynamicMapIcon(2644.252, -2028.246, 12.5547, 27, 0xFFFFFFFF, -1,-1,-1, 1000);
@@ -158,6 +165,7 @@ public OnGameModeInit() {
     SendRconCommand("loadfs pnetstats");
     SendRconCommand("loadfs pnetstats2");
     SendRconCommand("loadfs vspawner");
+    SendRconCommand("loadfs cameditor");
 
     GangZonesIDs[0] = CreateZone(2632.8, -1852.8, 2959.3, -1668.1);
     GangZonesIDs[1] = CreateZone(2632.8, -1668.1, 2747.7, -1393.4);

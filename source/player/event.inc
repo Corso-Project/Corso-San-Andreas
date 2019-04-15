@@ -21,6 +21,7 @@ public OnPlayerRequestClass(playerid, classid) {
 
 		SetPlayerHealth(playerid, P[playerid][p_health]);
 		SetPlayerArmour(playerid, P[playerid][p_armour]);
+		P[playerid][_p_spawned] = true;
 	} else{
 		SetPlayerInterior(playerid, 0);
 		SetPlayerPos(playerid,1984.4445,157.9501,55.9384);
@@ -54,6 +55,7 @@ public OnPlayerRequestClass(playerid, classid) {
 			}
 		}
 	}
+	SendClientMessage(playerid, -1, "OnPlayerRequestClass");
 	return true;
 }
 public OnPlayerRequestSpawn(playerid) {
@@ -105,13 +107,28 @@ public OnPlayerDisconnect(playerid, reason) {
     return true;
 }
 public OnPlayerSpawn(playerid) {
-	for(new i; i < sizeof GangZonesIDs; i++) {
-		ShowZoneForPlayer(playerid, GangZonesIDs[i], GangZonesColors[random(sizeof GangZonesColors)]);
-		CreateZoneBorders(GangZonesIDs[i]);
+	if(P[playerid][_p_in_game] == true)
+	{
+		for(new i; i < sizeof GangZonesIDs; i++) {
+			ShowZoneForPlayer(playerid, GangZonesIDs[i], GangZonesColors[random(sizeof GangZonesColors)]);
+			CreateZoneBorders(GangZonesIDs[i]);
+		}
+		SendClientMessage(playerid, -1, "OnPlayerSpawn");
+		if (!P[playerid][_p_spawned]) {
+			SendClientMessage(playerid, -1, "Bad Guy");
+			respawnAtHospital(playerid);
+			P[playerid][_p_spawned] = true;
+		}
 	}
     return true;
 }
 public OnPlayerDeath(playerid, killerid, reason) {
+	SendClientMessage(playerid, -1, "OnPlayerDeath");
+	P[playerid][_p_spawned] = false;
+
+	new Float:x, Float:y, Float:z;
+	GetPlayerPos(playerid, x, y, z);
+	SetSpawnInfo(playerid, 0, P[playerid][p_skin], x, y, z, 0, 0,0,0,0,0,0);
     return true;
 }
 public OnPlayerText(playerid, text[]) {
@@ -125,4 +142,17 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 		Dialog_Show(playerid, Dialog:d_user_menu);
 	}
 	return true;
+}
+public OnPlayerClickMap(playerid, Float: fX, Float: fY, Float: fZ)
+{
+	switch(GetPlayerState(playerid)) {
+	    case 0,7..9: return 1;
+	    case 1,3..6: {
+	        if(GetPlayerInterior(playerid) != 0) SetPlayerInterior(playerid, 0);
+	        if(GetPlayerVirtualWorld(playerid) != 0) SetPlayerVirtualWorld(playerid, 0);
+	        SetPlayerPosFindZ(playerid, fX,fY,fZ+0.1);
+	    }
+	    case 2: SetVehiclePos(GetPlayerVehicleID(playerid), fX,fY,fZ+0.1);
+	}
+	return 1;
 }

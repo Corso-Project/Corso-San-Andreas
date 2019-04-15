@@ -1,0 +1,7 @@
+cmd: '{PROJECT_PATH}\\pawno\\pawncc.exe'
+args: [
+    '{FILE_ACTIVE}', '-;+', '-d3'
+]
+cwd: '{FILE_ACTIVE_PATH}'
+name: 'Pawn'
+sh: false
