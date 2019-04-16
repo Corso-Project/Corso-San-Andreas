@@ -474,6 +474,7 @@ public ExportMovement(playerid, inputtext[])
 	format(tagstring, sizeof(tagstring), "|----------%s----------|\r\n", inputtext);
 	format(movestring, sizeof(movestring),"InterpolateCameraPos(playerid, %f, %f, %f, %f, %f, %f, %i);\r\n",coordInfo[playerid][StartX], coordInfo[playerid][StartY], coordInfo[playerid][StartZ], coordInfo[playerid][EndX], coordInfo[playerid][EndY], coordInfo[playerid][EndZ],coordInfo[playerid][MoveSpeed]);
 	format(rotstring,sizeof(rotstring),"InterpolateCameraLookAt(playerid, %f, %f, %f, %f, %f, %f, %i);",coordInfo[playerid][StartLookX],coordInfo[playerid][StartLookY],coordInfo[playerid][StartLookZ],coordInfo[playerid][EndLookX],coordInfo[playerid][EndLookY],coordInfo[playerid][EndLookZ],coordInfo[playerid][RotSpeed]);
+	format(movestring, sizeof(movestring),"\n|----------------------|\r\n{ %f, %f, %f, %f, %f, %f };\r\n",coordInfo[playerid][StartX], coordInfo[playerid][StartY], coordInfo[playerid][StartZ], coordInfo[playerid][StartLookX], coordInfo[playerid][StartLookY], coordInfo[playerid][StartLookZ]);
 	new File:File = fopen(filename, io_write);
 	fwrite(File, tagstring);
 	fwrite(File, movestring);
