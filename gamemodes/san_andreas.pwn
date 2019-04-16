@@ -17,12 +17,13 @@
 #include <lib\sscanf2>
 #include <lib\streamer>
 #include <lib\time_t>
+#include <lib\timerfix>
 #include <lib\weaponskill>
 
 #include "..\source\vars.inc"
 
 main() {
-    
+
 }
 
 #include "..\source\freader.inc"

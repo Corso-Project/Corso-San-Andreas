@@ -150,6 +150,7 @@ public OnGameModeInit() {
     // Caligula
     CreateDynamicMapIcon(2270.634, 1635.599, 1007.367, 25, 0xFFFFFFFF, -1,-1,-1, 1000);
 
+    SendRconCommand("loadfs aview");
     SendRconCommand("loadfs dillimore_gas");
     SendRconCommand("loadfs flymode");
     SendRconCommand("loadfs kylies_barn");

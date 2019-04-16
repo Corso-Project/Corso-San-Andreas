@@ -36,13 +36,10 @@ stock respawnAtHospital(playerid) {
 		{-2658.1619, 631.018000, 14.4531, 18.00}
 	};
 	for (new x; x < sizeof(hospitalCoords); x++) {
-		printf("Iteration %i", x);
 	    new Float: distance = GetPlayerDistanceFromPoint(playerid, hospitalCoords[x][0], hospitalCoords[x][1], hospitalCoords[x][2]);
-		printf("distance: %f", distance);
 	    if (distance < min_distance) {
 	        min_distance = distance;
 	        min_id = x;
-			printf("x -> %i | %i", x, min_id);
 	    }
 	}
 	SetPlayerPos(playerid, hospitalCoords[min_id][0], hospitalCoords[min_id][1], hospitalCoords[min_id][2]);
@@ -51,7 +48,7 @@ stock respawnAtHospital(playerid) {
 }
 stock Cash_Give(playerid, money)
 {
-    P[playerid][p_cash] += money;  
+    P[playerid][p_cash] += money;
     ResetPlayerMoney(playerid);
     GivePlayerMoney(playerid, P[playerid][p_cash]);
 }
