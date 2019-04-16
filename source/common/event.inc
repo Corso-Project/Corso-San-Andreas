@@ -17,10 +17,6 @@ public OnGameModeInit() {
 	ShowNameTags(1);
     // DisableNameTagLOS();
 	UsePlayerPedAnims();
-    /* new start_year, start_month, start_day, start_hour, start_minute, start_second;
-    new time = gettime();
-    gmtime(time, start_year, start_month, start_day, start_hour, start_minute, start_second);
-    SetWorldTime(start_hour+2); */
 
 	// Selection
 		//male
@@ -155,7 +151,6 @@ public OnGameModeInit() {
     CreateDynamicMapIcon(2270.634, 1635.599, 1007.367, 25, 0xFFFFFFFF, -1,-1,-1, 1000);
 
     SendRconCommand("loadfs dillimore_gas");
-    SendRconCommand("loadfs ferriswheel");
     SendRconCommand("loadfs flymode");
     SendRconCommand("loadfs kylies_barn");
     SendRconCommand("loadfs ls_apartments1");
