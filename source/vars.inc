@@ -38,7 +38,9 @@ enum E_PLAYER_DATA
 	p_settings[10],
 	p_saveLastPos,
 
-	p_last_pos[45]
+	p_last_pos[45],
+	// another
+	p_friends[666]
 };
 new P[MAX_PLAYERS][E_PLAYER_DATA];
 

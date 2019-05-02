@@ -22,6 +22,11 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
         format(string, sizeof(string), "Вы вошли как администратор %i уровня.", P[playerid][p_access]);
         SendClientMessage(playerid, -1, string);
     }
+    foreach(new i:Player) {
+        if (P[playerid][p_access] > 3) return true;
+        ShowPlayerNameTagForPlayer(playerid, i, false);
+        ShowPlayerNameTagForPlayer(i, playerid, false);
+    }
     orm_update(P[playerid][_p_ormid]);
     return true;
 }

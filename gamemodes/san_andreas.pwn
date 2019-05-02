@@ -22,9 +22,7 @@
 
 #include "..\source\vars.inc"
 
-main() {
-
-}
+main() { }
 
 #include "..\source\freader.inc"
 
