@@ -22,8 +22,7 @@ public OnMySQL_InsertAccount(playerid) {
 }
 
 forward OnMySQL_CheckBans(playerid, reg_ip[46], last_ip[46]);
-public OnMySQL_CheckBans(playerid, reg_ip[46], last_ip[46])
-{
+public OnMySQL_CheckBans(playerid, reg_ip[46], last_ip[46]) {
 	if(cache_num_rows() == 0)
 	{
 		Dialog_Show(playerid, Dialog:d_user_login);
@@ -73,8 +72,7 @@ public OnMySQL_CheckBans(playerid, reg_ip[46], last_ip[46])
 	}
 }
 forward OnMySQL_DeleteBanName(playerid, Name_[24]);
-public OnMySQL_DeleteBanName(playerid, Name_[24])
-{
+public OnMySQL_DeleteBanName(playerid, Name_[24]) {
 	if(cache_num_rows() == 0)
 		return SendClientMessage(playerid, 0xB22222FF, "[Справка]: {FFFFFF}Этот пользователь/IP не забанен.");
 
@@ -86,8 +84,7 @@ public OnMySQL_DeleteBanName(playerid, Name_[24])
 	return true;
 }
 forward OnMySQL_DeleteBanIP(playerid, IP[46]);
-public OnMySQL_DeleteBanIP(playerid, IP[46])
-{
+public OnMySQL_DeleteBanIP(playerid, IP[46]) {
 	if(cache_num_rows() == 0)
 		return SendClientMessage(playerid, 0xB22222FF, "[Справка]: {FFFFFF}Этот пользователь/IP не забанен.");
 
@@ -99,8 +96,7 @@ public OnMySQL_DeleteBanIP(playerid, IP[46])
 	return true;
 }
 forward OnMySQL_OffBan(playerid, account[MAX_PLAYER_NAME], time, reason[64], time_string[10]);
-public OnMySQL_OffBan(playerid, account[MAX_PLAYER_NAME], time, reason[64], time_string[10])
-{
+public OnMySQL_OffBan(playerid, account[MAX_PLAYER_NAME], time, reason[64], time_string[10]) {
 	new b_Name[MAX_PLAYER_NAME],
 		b_Reg_IP[46],
 		b_Last_IP[46],
@@ -143,8 +139,7 @@ public OnMySQL_OffBan(playerid, account[MAX_PLAYER_NAME], time, reason[64], time
 	return true;
 }
 forward OnMySQL_GetBanInfo(playerid, name[MAX_PLAYER_NAME], id);
-public OnMySQL_GetBanInfo(playerid, name[MAX_PLAYER_NAME], id)
-{
+public OnMySQL_GetBanInfo(playerid, name[MAX_PLAYER_NAME], id) {
 	if(cache_num_rows() == 0)
 		return SendClientMessage(playerid, 0xB22222FF, "[Справка]: {FFFFFF}Не могу найти данный аккаунт в БД.");
 	else {

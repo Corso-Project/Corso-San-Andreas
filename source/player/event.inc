@@ -88,7 +88,6 @@ public OnPlayerConnect(playerid) {
 }
 public OnPlayerDisconnect(playerid, reason) {
 	if (P[playerid][_p_ormid]) {
-		printf("Δενόγθ: %i",  GetPlayerMoney(playerid));
 	    if (P[playerid][_p_in_game] == true) {
 			if (P[playerid][p_saveLastPos] == 1) {
 				new Float:x, Float:y, Float:z, Float: Angle;
@@ -97,7 +96,6 @@ public OnPlayerDisconnect(playerid, reason) {
 				format(P[playerid][p_last_pos], 45, "%f, %f, %f, %0.2f", x, y, z, Angle);
 			}
 
-			// new Float: Health, Float: Armour;
     		GetPlayerHealth(playerid, P[playerid][p_health]);
 			GetPlayerArmour(playerid, P[playerid][p_armour]);
 			P[playerid][p_cash] = GetPlayerMoney(playerid);
