@@ -1,8 +1,13 @@
 public OnGameModeInit() {
     Load_MySQL();
+    Load_Settings();
 	//Подключения к MySQL
 	mysql_log(ALL);
-	g_MySQL_DB = mysql_connect(g_MySQL_Host,g_MySQL_User,g_MySQL_Password,g_MySQL_Database);
+    new MySQLOpt:options = mysql_init_options();
+    mysql_set_option(options, AUTO_RECONNECT, true);
+    mysql_set_option(options, POOL_SIZE, 15);
+    mysql_set_option(options, MULTI_STATEMENTS, true);
+	g_MySQL_DB = mysql_connect(g_MySQL_Host, g_MySQL_User, g_MySQL_Password, g_MySQL_Database, options);
     mysql_set_charset("cp1251");
 	if(mysql_errno() != 0) {
 	    print("\n[Ошибка]: Внимание! Подключение к базе данных MySQL не установлено.\n");
@@ -234,6 +239,7 @@ public OnGameModeInit() {
 public OnGameModeExit() {
     KillTimer(weatherTimer);
     KillTimer(customtimeTimer);
+    printf("There are %d unprocessed queries.", mysql_unprocessed_queries());
     mysql_close();
 	return 1;
 }
