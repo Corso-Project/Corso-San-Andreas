@@ -6,3 +6,8 @@ stock Load_MySQL() {
 	ini_getString(mysql_ini, "Password", g_MySQL_Password);
 	ini_closeFile(mysql_ini);
 }
+stock Load_Settings(){
+	new settings_ini = ini_openFile("settings.ini");
+	ini_getInteger(settings_ini,"LogLevel", g_Log_Level);
+	ini_closeFile(settings_ini);
+}

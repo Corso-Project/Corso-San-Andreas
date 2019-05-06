@@ -9,11 +9,17 @@ stock IsNumeric(const string[])
 			return 0;
 		}
 	}
-	return 1;
+	return true;
 }
 stock randomEx(min, max)
 {
-    //Credits to y_less
+    // Credits to y_less
     new rand = random(max-min)+min;
     return rand;
+}
+stock Log(const fmat[], va_args<>)
+{
+	if (g_Log_Level == 0) return true;
+	print(va_return(fmat, va_start<2>));
+	return true;
 }

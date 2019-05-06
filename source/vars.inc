@@ -50,6 +50,8 @@ new g_MySQL_Host[46],
 	g_MySQL_Database[46],
 	g_MySQL_Password[46],
 	MySQL: g_MySQL_DB;
+// settings.ini
+new g_Log_Level;
 // Timers
 new connect_player_wait[MAX_PLAYERS],
 	weatherTimer,
