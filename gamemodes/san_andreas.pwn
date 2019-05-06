@@ -4,7 +4,8 @@
 #include <lib\fixes>
 
 #include <lib\a_zone>
-
+#include <lib\crashdetect>
+#include <lib\customYSI>
 #include <lib\mdialog>
 #include <lib\a_mysql>
 #include <lib\foreach>
