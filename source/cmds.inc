@@ -46,7 +46,7 @@ CMD:ban(playerid, params[]){
 	new query[256];
 
 	mysql_format(g_MySQL_DB, query, sizeof(query), "INSERT INTO `bans` (Name, Admin_Name, Reg_IP, Last_IP, Unix_Time_Start, Unix_Time_End, Reason) VALUES ('%e', '%e', '%s', '%s', '%i', '%i', '%e')", P[target][p_name], P[playerid][p_name], P[target][p_reg_ip], P[target][p_last_ip], gettime(), time, reason);
-	mysql_tquery(g_MySQL_DB, query);
+	mysql_pquery(g_MySQL_DB, query);
 
 	Kick(target);
 	return true;
@@ -60,7 +60,7 @@ CMD:unban(playerid, params[])
 
     new query[64+1];
 	mysql_format(g_MySQL_DB, query, sizeof(query), "SELECT * FROM `bans` WHERE `Name` = '%e'", target);
-	mysql_tquery(g_MySQL_DB, query, "OnMySQL_DeleteBanName", "is", playerid, target);
+	mysql_pquery(g_MySQL_DB, query, "OnMySQL_DeleteBanName", "is", playerid, target);
 	return 1;
 }
 CMD:unbanip(playerid, params[])
@@ -72,7 +72,7 @@ CMD:unbanip(playerid, params[])
 
     new query[86+1];
 	mysql_format(g_MySQL_DB, query, sizeof(query), "SELECT * FROM `bans` WHERE `Name` = '%s'", IP);
-	mysql_tquery(g_MySQL_DB, query, "OnMySQL_DeleteBanIP", "is", playerid, IP);
+	mysql_pquery(g_MySQL_DB, query, "OnMySQL_DeleteBanIP", "is", playerid, IP);
 	return 1;
 }
 CMD:offban(playerid, params[]){
@@ -106,7 +106,7 @@ CMD:offban(playerid, params[]){
 
 		new query[156];
 		mysql_format(g_MySQL_DB, query, sizeof(query), "SELECT *, (SELECT `ID` FROM `bans` WHERE `Name` = '%e') as banid FROM `accounts` WHERE `Name` = '%e'", target, target);
-		mysql_tquery(g_MySQL_DB, query, "OnMySQL_OffBan", "isiss", playerid, target, time, reason, time_string);
+		mysql_pquery(g_MySQL_DB, query, "OnMySQL_OffBan", "isiss", playerid, target, time, reason, time_string);
 		return 1;
 	}
 	return true;
@@ -122,6 +122,6 @@ CMD:baninfo(playerid, params[]){
 
 	new query[86+1];
 	mysql_format(g_MySQL_DB, query, sizeof(query), "SELECT * FROM `bans` WHERE `Name` = '%e' OR `ID` = '%i'", target, strval(target));
-	mysql_tquery(g_MySQL_DB, query, "OnMySQL_GetBanInfo", "isi", playerid, target, strval(target));
+	mysql_pquery(g_MySQL_DB, query, "OnMySQL_GetBanInfo", "isi", playerid, target, strval(target));
 	return true;
 }
