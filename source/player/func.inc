@@ -46,9 +46,14 @@ stock respawnAtHospital(playerid) {
 	SetPlayerFacingAngle(playerid, hospitalCoords[min_id][3]);
 	SetCameraBehindPlayer(playerid);
 }
-stock Cash_Give(playerid, money)
-{
+stock Cash_Give(playerid, money) {
     P[playerid][p_cash] += money;
     ResetPlayerMoney(playerid);
     GivePlayerMoney(playerid, P[playerid][p_cash]);
+}
+stock Message_ToAdmins(color, const fmat[], va_args<>)
+{
+    foreach(new i : Player)
+        if (P[i][p_access] >= 1)
+            SendClientMessage(i, color, va_return(fmat, va_start<2>));
 }

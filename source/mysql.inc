@@ -23,8 +23,7 @@ public OnMySQL_InsertAccount(playerid) {
 
 forward OnMySQL_CheckBans(playerid, reg_ip[46], last_ip[46]);
 public OnMySQL_CheckBans(playerid, reg_ip[46], last_ip[46]) {
-	if(cache_num_rows() == 0)
-	{
+	if(cache_num_rows() == 0) {
 		Dialog_Show(playerid, Dialog:d_user_login);
 	} else {
 		new b_ID,
@@ -80,7 +79,7 @@ public OnMySQL_DeleteBanName(playerid, Name_[24]) {
 	mysql_format(g_MySQL_DB, query, sizeof(query), "DELETE FROM `bans` WHERE `Name` = '%e'", Name_);
 	mysql_tquery(g_MySQL_DB, query);
 
-	// Message_ToAdmin("MESSAGE_ADMIN_UNBAN",P[playerid][p_name], Name_);
+	Message_ToAdmins(0xAA3333AA, "MESSAGE_ADMIN_UNBAN",P[playerid][p_name], Name_);
 	return true;
 }
 forward OnMySQL_DeleteBanIP(playerid, IP[46]);
@@ -92,7 +91,7 @@ public OnMySQL_DeleteBanIP(playerid, IP[46]) {
 	mysql_format(g_MySQL_DB, query, sizeof(query), "DELETE FROM `bans` WHERE `Reg_IP` = '%s' OR `Last_IP` = `%s`", IP, IP);
 	mysql_tquery(g_MySQL_DB, query);
 
-	// Message_ToAdmin("MESSAGE_ADMIN_UNBAN_IP",P[playerid][p_name], IP);
+	Message_ToAdmins(0xAA3333AA, "MESSAGE_ADMIN_UNBAN_IP",P[playerid][p_name], IP);
 	return true;
 }
 forward OnMySQL_OffBan(playerid, account[MAX_PLAYER_NAME], time, reason[64], time_string[10]);
@@ -135,7 +134,7 @@ public OnMySQL_OffBan(playerid, account[MAX_PLAYER_NAME], time, reason[64], time
 	} else if(strfind(time_string, "m", true) != -1) {
 		format(string, sizeof(string), "%i Ìוסÿצ{FFCC66}(א){FFFFFF}", strval(time_string));
 	}
-	// Message_ToAdmin("MESSAGE_ADMIN_OFFBAN", P[playerid][p_name], account, string, reason);
+	Message_ToAdmins(0xAA3333AA, "MESSAGE_ADMIN_OFFBAN", P[playerid][p_name], account, string, reason);
 	return true;
 }
 forward OnMySQL_GetBanInfo(playerid, name[MAX_PLAYER_NAME], id);
