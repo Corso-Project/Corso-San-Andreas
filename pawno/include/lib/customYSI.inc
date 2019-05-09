@@ -1,3 +1,4 @@
+// Credits to YSI
 //#define va_args<%0> %0
 #if defined _INC_y_globaltags
 	#endinput

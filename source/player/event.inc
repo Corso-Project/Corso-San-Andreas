@@ -107,8 +107,7 @@ public OnPlayerDisconnect(playerid, reason) {
     return true;
 }
 public OnPlayerSpawn(playerid) {
-	if(P[playerid][_p_in_game] == true)
-	{
+	if(P[playerid][_p_in_game] == true) {
 		for(new i; i < sizeof GangZonesIDs; i++) {
 			ShowZoneForPlayer(playerid, GangZonesIDs[i], GangZonesColors[random(sizeof GangZonesColors)]);
 			CreateZoneBorders(GangZonesIDs[i]);
@@ -134,17 +133,14 @@ public OnPlayerDeath(playerid, killerid, reason) {
 public OnPlayerText(playerid, text[]) {
     return false;
 }
-public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
-{
+public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 	if(P[playerid][_p_in_game] == false) return 0;
-	if(newkeys & KEY_YES)
-	{
+	if(newkeys & KEY_YES) {
 		Dialog_Show(playerid, Dialog:d_user_menu);
 	}
 	return true;
 }
-public OnPlayerClickMap(playerid, Float: fX, Float: fY, Float: fZ)
-{
+public OnPlayerClickMap(playerid, Float: fX, Float: fY, Float: fZ) {
 	switch(GetPlayerState(playerid)) {
 	    case 0,7..9: return 1;
 	    case 1,3..6: {

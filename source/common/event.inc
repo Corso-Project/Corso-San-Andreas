@@ -259,8 +259,7 @@ public OnRconLoginAttempt(ip[], password[], success) {
     }
     return 1;
 }
-public OnRconCommand(cmd[])
-{
+public OnRconCommand(cmd[]) {
     if (!strcmp(cmd, "myspeed", true)) {
         new query[128];
         for(new a = 0; a < 1000; a++) {
@@ -272,8 +271,7 @@ public OnRconCommand(cmd[])
     return 0;
 }
 forward CheckMySQLSpeed(date);
-public CheckMySQLSpeed(date)
-{
+public CheckMySQLSpeed(date) {
     printf("Time MySQL --------> [Time now] %i - [Time of query] %i = %i ms", gettime(), date, gettime() - date);
 	return 1;
 }

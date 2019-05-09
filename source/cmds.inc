@@ -51,8 +51,7 @@ CMD:ban(playerid, params[]){
 	Kick(target);
 	return true;
 }
-CMD:unban(playerid, params[])
-{
+CMD:unban(playerid, params[]) {
 	if (P[playerid][p_access] < 1) return true;
 
 	new target[MAX_PLAYER_NAME];
@@ -63,8 +62,7 @@ CMD:unban(playerid, params[])
 	mysql_pquery(g_MySQL_DB, query, "OnMySQL_DeleteBanName", "is", playerid, target);
 	return 1;
 }
-CMD:unbanip(playerid, params[])
-{
+CMD:unbanip(playerid, params[]) {
 	if (P[playerid][p_access] < 1) return true;
 
 	new IP[46];
@@ -75,7 +73,7 @@ CMD:unbanip(playerid, params[])
 	mysql_pquery(g_MySQL_DB, query, "OnMySQL_DeleteBanIP", "is", playerid, IP);
 	return 1;
 }
-CMD:offban(playerid, params[]){
+CMD:offban(playerid, params[]) {
 	if (P[playerid][p_access] < 1) return true;
 	new target[MAX_PLAYER_NAME],
 		time_string[10],
@@ -111,7 +109,7 @@ CMD:offban(playerid, params[]){
 	}
 	return true;
 }
-CMD:baninfo(playerid, params[]){
+CMD:baninfo(playerid, params[]) {
 	if(P[playerid][p_access] < 1) return true;
 	new target[MAX_PLAYER_NAME];
 	if(sscanf(params, "s[24]", target)) return SendClientMessage(playerid, 0xB22222FF, "[Справка]: {FFFFFF}Используйте /baninfo [ID бана или Имя пользователя]");

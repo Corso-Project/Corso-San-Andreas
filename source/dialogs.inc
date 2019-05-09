@@ -15,8 +15,6 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
 	TogglePlayerSpectating(playerid, 0);
     GivePlayerMoney(playerid, P[playerid][p_cash]);
 
-    sscanf(P[playerid][p_settings], "p<,>i", P[playerid][p_saveLastPos]);
-
     if (P[playerid][p_access] > 1) {
         new string[37+1+1];
         format(string, sizeof(string), "Вы вошли как администратор %i уровня.", P[playerid][p_access]);
@@ -66,13 +64,14 @@ DialogResponse:d_user_select_gender(playerid, response, listitem, inputtext[]) {
 }
 
 DialogCreate:d_user_menu(playerid) {
-    Dialog_Open(playerid, Dialog:d_user_menu, DIALOG_STYLE_LIST, "Меню", "1. Статистика\n2. Настройки", "Выбрать", "");
+    Dialog_Open(playerid, Dialog:d_user_menu, DIALOG_STYLE_LIST, "Меню", "1. Статистика\n2. Настройки\n3. Список друзей", "Выбрать", "");
 }
 DialogResponse:d_user_menu(playerid, response, listitem, inputtext[]) {
     if (!response) return true;
     switch(listitem) {
         case 0: Dialog_Show(playerid, Dialog:d_user_stats);
         case 1: Dialog_Show(playerid, Dialog:d_user_settings);
+        case 2: Dialog_Show(playerid, Dialog:d_user_friends);
     }
     return true;
 }
@@ -104,5 +103,14 @@ DialogResponse:d_user_settings(playerid, response, listitem, inputtext[]) {
         }
     }
     Update_PlayerSettings(playerid);
+    Dialog_Show(playerid, Dialog:d_user_settings);
+    return true;
+}
+
+DialogCreate:d_user_friends(playerid) {
+}
+DialogResponse:d_user_friends(playerid, response, listitem, inputtext[]) {
+    if (!response) return Dialog_Show(playerid, Dialog:d_user_menu);
+
     return true;
 }

@@ -1,5 +1,4 @@
-stock Vehicle_LoadFromFile(const filename[])
-{
+stock Vehicle_LoadFromFile(const filename[]) {
 	if(!fexist(filename)) return 0;
 	new File: txt;
 	new line[128];

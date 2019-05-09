@@ -28,17 +28,39 @@ public AutoTimer(playerid) {
 
     orm_addvar_string(ormid, P[playerid][p_last_pos], 45, "Last_Pos");
 
-    orm_addvar_string(ormid, P[playerid][p_friends], 666, "Friends");
-
     orm_setkey(ormid, "Name");
     orm_select(ormid, "OnMySQL_SelectAccount", "i", playerid);
 }
 
 forward WeatherChanger();
 public WeatherChanger() {
-    SetWeather(randomEx(0, 20));
-    // SendClientMessageToAll(-1, "Погода изменилась!");
-    printf("Погода изменилась!");
+    new weather = randomEx(0, 20),
+        dests[34];
+    SetWeather(weather);
+    switch(weather) {
+        case 0: dests = "Очень солнечно ЛС";
+        case 1: dests = "Солнечно ЛС";
+        case 2: dests = "Очень солнечно с смогом ЛС";
+        case 3: dests = "Солнечно с смогом ЛС";
+        case 4: dests = "Облачно ЛС";
+        case 5: dests = "Солнечно СФ";
+        case 6: dests = "Очень солнечно СФ";
+        case 7: dests = "Облачно СФ";
+        case 8: dests = "Дождь СФ";
+        case 9: dests = "Смог СФ";
+        case 10: dests = "Солнечно ЛВ";
+        case 11: dests = "Очень солнечно ЛВ";
+        case 12: dests = "Облачно ЛВ";
+        case 13: dests = "Очень солнечно Деревня";
+        case 14: dests = "Солнечно Деревня";
+        case 15: dests = "Облачно Деревня";
+        case 16: dests = "Дождливо Деревня";
+        case 17: dests = "Очень солнечно Пустыня";
+        case 18: dests = "Солнечно Пустыня";
+        case 19: dests = "Песчаная буря";
+        case 20: dests = "Подводное (зеленоватый, туманный)";
+    }
+    Log("[DEBUG] Погода изменилась на ID: %i(%s)", weather, dests);
     return 1;
 }
 forward CustomTimeTimer();
@@ -53,10 +75,7 @@ public CustomTimeTimer(){
         Minute += 1;
     }
 
-    // new string[30];
-    // format(string, sizeof(string), "Время сменилось: %i:%i", Hour, Minute);
     foreach (new playerid : Player) {
         SetPlayerTime(playerid, Hour, Minute);
-        // SendClientMessage(playerid, -1, string);
     }
 }
