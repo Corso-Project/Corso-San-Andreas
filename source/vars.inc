@@ -69,7 +69,14 @@ enum E_PLAYER_DATA
 
 	p_last_pos[45]
 };
+
+enum E_VEHICLE_DATA
+{
+	v_id,
+	bool: v_door,
+};
 new P[MAX_PLAYERS][E_PLAYER_DATA];
+new V[MAX_VEHICLES][E_VEHICLE_DATA];
 
 // mysql.ini
 new g_MySQL_Host[46],

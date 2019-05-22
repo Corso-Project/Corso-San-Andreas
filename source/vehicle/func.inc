@@ -14,6 +14,7 @@ stock Vehicle_LoadFromFile(const filename[]) {
 	    sscanf(line, "p<,>iffffii", vehicletype,x,y,z,rotation,color1,color2);
 	    new vehicleid = CreateVehicle(vehicletype, x,y,z,rotation, color1,color2, -1);
 		SetVehicleNumberPlate(vehicleid, "<-->");
+		V[vehicleid][v_door] = false;
 	}
 	fclose(txt);
 	return 1;

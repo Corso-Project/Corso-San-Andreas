@@ -150,5 +150,13 @@ public OnPlayerClickMap(playerid, Float: fX, Float: fY, Float: fZ) {
 	    }
 	    case 2: SetVehiclePos(GetPlayerVehicleID(playerid), fX,fY,fZ+0.1);
 	}
-	return 1;
+	return true;
+}
+public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) {
+	if (V[vehicleid][v_door] == false) {
+		ClearAnimations(playerid);
+		SendClientMessage(playerid, -1, "Автомобиль закрыт.");
+		return true;
+	}
+    return true;
 }
