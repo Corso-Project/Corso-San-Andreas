@@ -20,11 +20,11 @@ CMD:ban(playerid, params[]){
 	} else if(strfind(time_string, "d", true) != -1) {
 		time = gettime() + (strval(time_string)*86400);
 
-		va_SendClientMessageToAll(-1, "Администратор %s забанил %s на %i Д{FFCC66}(ней){FFFFFF}ень. Причина: %s", P[playerid][p_name], P[target][p_name], strval(time_string), reason
+		va_SendClientMessageToAll(-1, "Администратор %s забанил %s на %i Д{FFCC66}(ней){FFFFFF}ень. Причина: %s", P[playerid][p_name], P[target][p_name], strval(time_string), reason);
 	} else if(strfind(time_string, "m", true) != -1) {
 		time = gettime() + (strval(time_string)*2629743);
 
-		SendClientMessageToAll(-1, "Администратор %s забанил %s на %i Месяц{FFCC66}(а){FFFFFF}. Причина: %s", P[playerid][p_name], P[target][p_name], strval(time_string), reason);
+		va_SendClientMessageToAll(-1, "Администратор %s забанил %s на %i Месяц{FFCC66}(а){FFFFFF}. Причина: %s", P[playerid][p_name], P[target][p_name], strval(time_string), reason);
 	}
 	new query[256];
 
