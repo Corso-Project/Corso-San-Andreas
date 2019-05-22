@@ -20,6 +20,7 @@
 #include <lib\time_t>
 #include <lib\timerfix>
 #include <lib\weaponskill>
+#include <lib\whirlpool>
 
 #include "..\source\vars.inc"
 

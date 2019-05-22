@@ -18,7 +18,7 @@ enum E_PLAYER_DATA
 	//mysql synced
 	p_uid,
 	p_name[MAX_PLAYER_NAME],
-	p_password[18],
+	p_password[WHIRLPOOL_LEN],
 
 	p_access,
 
@@ -72,6 +72,7 @@ new Float: CamerasRand[][] = {
 };
 // Gang Zone
 new GangZonesColors[] = {
-    0x33DD0070, 0xDD00DD60, 0xDDBB0085
+    // 0x33DD0070, 0xDD00DD60, 0xDDBB0085
+	0xFFFFFF50, 0xFFFFFF50, 0xFFFFFF50
 };
 new GangZonesIDs[58];

@@ -7,7 +7,7 @@ public AutoTimer(playerid) {
 
     orm_addvar_int(ormid, P[playerid][p_uid], "UID");
     orm_addvar_string(ormid, P[playerid][p_name], MAX_PLAYER_NAME, "Name");
-    orm_addvar_string(ormid, P[playerid][p_password], 18, "Password");
+    orm_addvar_string(ormid, P[playerid][p_password], WHIRLPOOL_LEN, "Password");
 
     orm_addvar_int(ormid, P[playerid][p_access], "Access");
 

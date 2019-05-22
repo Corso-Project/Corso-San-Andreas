@@ -7,9 +7,12 @@ DialogResponse:d_user_login(playerid, response, listitem, inputtext[]) {
 		return 1;
 	}
     if(!strlen(inputtext)) return Dialog_Show(playerid, Dialog:d_user_login);
-    if(strlen(inputtext) != strlen(P[playerid][p_password])) {
-		if(strcmp(P[playerid][p_password], inputtext, false) != 0) return SendClientMessage(playerid, -1, "Неправильынй пароль.");
-	}
+    WP_Hash(inputtext, 129, inputtext);
+    if(strcmp(P[playerid][p_password], inputtext, false) != 0) {
+        SendClientMessage(playerid, -1, "Неправильынй пароль.");
+        Dialog_Show(playerid, Dialog:d_user_login);
+        return true;
+    }
     P[playerid][_p_in_game] = true;
     GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
 	TogglePlayerSpectating(playerid, 0);
@@ -41,7 +44,7 @@ DialogResponse:d_user_register(playerid, response, listitem, inputtext[]) {
 		case 'A'..'Z': continue;
 		default: return Dialog_Show(playerid, Dialog:d_user_register);
 	}
-	format(P[playerid][p_password], 18, inputtext);
+    WP_Hash(P[playerid][p_password], 129, inputtext);
 	GetPlayerIp(playerid, P[playerid][p_reg_ip], 46);
     GetPlayerIp(playerid, P[playerid][p_last_ip], 46);
 
