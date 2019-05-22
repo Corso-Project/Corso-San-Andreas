@@ -1,9 +1,36 @@
-#define GAMEMODE_VERSION	"San Andreas v 0.0.3"
+#define GAMEMODE_VERSION	"San Andreas v 0.0.4"
 #define SERVER_NAME			"Corso San Andreas"
 
-new // Year = 1992,
-	Hour = 0,
+new Hour = 0,
 	Minute = 0;
+
+enum {
+	ORG_UNKNOWN,
+
+	ORG_GOVERNMENT,
+	ORG_FBI,
+	ORG_LSPD,
+	ORG_SFPD,
+	ORG_LVPD,
+	ORG_MILITARY,
+	ORG_EMERGENCY,
+	ORG_SANNEWS,
+	ORG_AUTOSCHOOL,
+
+	ORG_GROVE,
+	ORG_BALLAS,
+	ORG_AZTECAS,
+	ORG_VAGOS,
+	ORG_RIFA,
+
+	ORG_CHINESE,
+	ORG_DANANG,
+	ORG_RUSSIAN,
+	ORG_ITALIAN,
+
+	ORG_BIKERS,
+	ORG_CA
+}
 
 enum {
 	SEX_FEMALE,
@@ -40,7 +67,7 @@ enum E_PLAYER_DATA
 	p_settings[10],
 	p_saveLastPos,
 
-	p_last_pos[45],
+	p_last_pos[45]
 };
 new P[MAX_PLAYERS][E_PLAYER_DATA];
 
@@ -59,7 +86,7 @@ new connect_player_wait[MAX_PLAYERS],
 
 // All
 new Float: CamerasRand[][] = {
-	// SetPlayerCameraPos         // SetPlayerCameraLookAt
+	// SetPlayerCameraPos                 // SetPlayerCameraLookAt
 	{1587.295410, -1343.91918, 353.02212, 1583.398071, -1345.2114, 350.16882},
 	{2236.614990, -1730.95153, 17.908832, 2238.796630, -1726.5458, 18.820371},
 	{2089.854492, 1537.968750, 24.085695, 2091.074951, 1542.81030, 23.820104},
@@ -74,7 +101,6 @@ new Float: CamerasRand[][] = {
 };
 // Gang Zone
 new GangZonesColors[] = {
-    // 0x33DD0070, 0xDD00DD60, 0xDDBB0085
 	0xFFFFFF50, 0xFFFFFF50, 0xFFFFFF50
 };
 new GangZonesIDs[58];

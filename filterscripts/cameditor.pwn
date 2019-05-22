@@ -164,6 +164,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	    else SendClientMessage(playerid, -1, "You are currently not using the camera movement editor.");
 	    return 1;
 	}
+	if(!strcmp(cmdtext, "/export", true)) {
+		ExportMovement(playerid, "test");
+		SendClientMessage(playerid, -1, "sdadasdasdasdas");
+		return 1;
+	}
 	return 0;
 }
 
