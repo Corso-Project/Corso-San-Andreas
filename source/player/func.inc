@@ -72,3 +72,34 @@ stock IRCMembers(playerid) {
 		if (GetPVarInt(i, "IRC") == GetPVarInt(playerid, "IRC"))
 			va_SendClientMessage(playerid, -1, "%s[%i]", Name(i), i);
 }
+stock Get_TeamName(playerid) {
+	new dests[32];
+	switch(P[playerid][p_job_team]) {
+		case ORG_UNKNOWN: dests = "Гражданин";
+		
+		case ORG_GOVERNMENT: dests = "Правительство Штата";
+		case ORG_FBI: dests = "Федеральное Бюро Расследований";
+		case ORG_LSPD: dests = "Полиция Лос Сантос";
+		case ORG_SFPD: dests = "Полиция Сан Фиерро";
+		case ORG_LVPD: dests = "Полиция Лас Вентурас";
+		case ORG_MILITARY: dests = "Национальная Гвардия";
+		case ORG_EMERGENCY: dests = "Служба Экстренной Помощи";
+		case ORG_SANNEWS: dests = "Новости Сан Андреас";
+		case ORG_AUTOSCHOOL: dests = "Центр Аттестации";
+
+		case ORG_GROVE: dests = "Банда 'Grove Street Families'";
+		case ORG_BALLAS: dests = "Банда 'Ballas'";
+		case ORG_AZTECAS: dests = "Банда 'Varrios Los Aztecas'";
+		case ORG_VAGOS: dests = "Банда 'Los Santos Vagos'";
+		case ORG_RIFA: dests = "Банда 'San Fierro Rifa'";
+
+		case ORG_CHINESE: dests = "Семья 'Триада'";
+		case ORG_DANANG: dests = "Семья 'Da Nang Boys'";
+		case ORG_RUSSIAN: dests = "Семья 'Воры в законе'";
+		case ORG_ITALIAN: dests = "Семья 'Ла Коза Ностра'";
+
+		case ORG_BIKERS: dests = "Байкеры Сан-Андреас";
+		case ORG_ICA: dests = "Контрактное Агентство";
+	}
+	return dests;
+}

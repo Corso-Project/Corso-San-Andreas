@@ -30,6 +30,8 @@ enum E_PLAYER_DATA
 	Float: p_health,
 	Float: p_armour,
 
+	p_job_team,
+
 	p_reg_date[32],
 	p_reg_ip[46],
 	p_last_ip[46],

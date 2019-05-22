@@ -20,6 +20,8 @@ public AutoTimer(playerid) {
     orm_addvar_float(ormid, P[playerid][p_health], "Health");
     orm_addvar_float(ormid, P[playerid][p_armour], "Armour");
 
+    orm_addvar_int(ormid, P[playerid][p_job_team], "Job_Team");
+
     orm_addvar_string(ormid, P[playerid][p_reg_date], 32, "Reg_Date");
     orm_addvar_string(ormid, P[playerid][p_reg_ip], 46, "Reg_IP");
     orm_addvar_string(ormid, P[playerid][p_last_ip], 46, "Last_IP");
