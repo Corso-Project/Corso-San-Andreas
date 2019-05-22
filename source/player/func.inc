@@ -76,7 +76,7 @@ stock Get_TeamName(playerid) {
 	new dests[32];
 	switch(P[playerid][p_job_team]) {
 		case ORG_UNKNOWN: dests = "Гражданин";
-		
+
 		case ORG_GOVERNMENT: dests = "Правительство Штата";
 		case ORG_FBI: dests = "Федеральное Бюро Расследований";
 		case ORG_LSPD: dests = "Полиция Лос Сантос";
@@ -99,7 +99,7 @@ stock Get_TeamName(playerid) {
 		case ORG_ITALIAN: dests = "Семья 'Ла Коза Ностра'";
 
 		case ORG_BIKERS: dests = "Байкеры Сан-Андреас";
-		case ORG_ICA: dests = "Контрактное Агентство";
+		case ORG_CA: dests = "Контрактное Агентство";
 	}
 	return dests;
 }
