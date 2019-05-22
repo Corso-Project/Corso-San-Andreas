@@ -51,6 +51,8 @@ DialogResponse:d_user_register(playerid, response, listitem, inputtext[]) {
     sscanf(P[playerid][p_settings], "p<,>i", P[playerid][p_saveLastPos]);
     P[playerid][p_saveLastPos] = 1;
     format(P[playerid][p_settings], 10, "%i", P[playerid][p_saveLastPos]);
+    P[playerid][p_cash] = randomEx(100, 1666);
+    GivePlayerMoney(playerid, P[playerid][p_cash]);
 
     Dialog_Show(playerid, Dialog:d_user_select_gender);
 	return true;
