@@ -51,3 +51,24 @@ stock Cash_Give(playerid, money) {
     ResetPlayerMoney(playerid);
     GivePlayerMoney(playerid, P[playerid][p_cash]);
 }
+stock Name(playerid) {
+    new dest[MAX_PLAYER_NAME+1];
+	GetPlayerName(playerid, dest, MAX_PLAYER_NAME);
+	return dest;
+}
+stock TeleportPlayerToPos(playerid, Float:x, Float:y, Float:z, interiorid, worldid) {
+	SetPlayerPos(playerid, x, y, z);
+	SetPlayerInterior(playerid, interiorid);
+	SetPlayerVirtualWorld(playerid, worldid);
+}
+stock Message_ToIRC(playerid, const fmat[], va_args<>) {
+	foreach(new i : Player)
+		if (GetPVarInt(i, "IRC") == GetPVarInt(playerid, "IRC"))
+			SendClientMessage(i, -1, va_return(fmat, va_start<2>));
+}
+stock IRCMembers(playerid) {
+	va_SendClientMessage(playerid, -1, "[IRC] Участники %i IRC канала:", GetPVarInt(playerid, "IRC"));
+	foreach(new i : Player)
+		if (GetPVarInt(i, "IRC") == GetPVarInt(playerid, "IRC"))
+			va_SendClientMessage(playerid, -1, "%s[%i]", Name(i), i);
+}
