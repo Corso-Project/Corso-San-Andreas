@@ -178,3 +178,31 @@ public OnMySQL_GetBanInfo(playerid, name[MAX_PLAYER_NAME], id) {
 	}
 	return true;
 }
+forward OnMySQL_GangZones();
+public OnMySQL_GangZones() {
+	if(cache_num_rows() == 0)
+		return print("[OnMySQL_GangZones] В базе данных нет GangZones!");
+	if (cache_num_rows() != sizeof(GZ))
+		return printf("[OnMySQL_GangZones] В базе данных больше зон [%d], чем в массиве GZ [%d]", cache_num_rows(), sizeof(GZ));
+
+	new TotalGangZones;
+	for(new x; x < sizeof(GZ); x++) {
+		GZ[x][_gz_ormid] = orm_create("gangzones");
+
+		orm_addvar_int(GZ[x][_gz_ormid], GZ[x][gz_id], "ID");
+	    orm_setkey(GZ[x][_gz_ormid], "ID");
+	    orm_addvar_float(GZ[x][_gz_ormid], GZ[x][gz_min_pos_x], "MinX");
+		orm_addvar_float(GZ[x][_gz_ormid], GZ[x][gz_min_pos_y], "MinY");
+		orm_addvar_float(GZ[x][_gz_ormid], GZ[x][gz_max_pos_x], "MaxX");
+		orm_addvar_float(GZ[x][_gz_ormid], GZ[x][gz_max_pos_y], "MaxY");
+	    orm_addvar_int(GZ[x][_gz_ormid], GZ[x][gz_team],"Team");
+
+	    orm_apply_cache(GZ[x][_gz_ormid], x);
+
+		GZ[x][_gz_local] = CreateZone(GZ[x][gz_min_pos_x], GZ[x][gz_min_pos_y], GZ[x][gz_max_pos_x], GZ[x][gz_max_pos_y]);
+		CreateZoneBorders(GZ[x][_gz_local]);
+		TotalGangZones++;
+	}
+	printf("Загруженно Ганг Зон:%i      [Длительность загрузки: %d ms]",TotalGangZones,cache_get_query_exec_time(MILLISECONDS));
+	return true;
+}

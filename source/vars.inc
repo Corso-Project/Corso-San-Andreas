@@ -1,5 +1,6 @@
 #define GAMEMODE_VERSION	"San Andreas v 0.0.4"
 #define SERVER_NAME			"Corso San Andreas"
+#define MAX_GANGZONES       58
 
 new Hour = 0,
 	Minute = 0;
@@ -76,8 +77,22 @@ enum E_VEHICLE_DATA
 	//
 	bool: v_door,
 };
+
+enum E_GANGZONES_DATA
+{
+	ORM: _gz_ormid,
+	_gz_local,
+	// mysql synced
+	gz_id,
+	Float: gz_min_pos_x,
+	Float: gz_min_pos_y,
+	Float: gz_max_pos_x,
+	Float: gz_max_pos_y,
+	gz_team
+}
 new P[MAX_PLAYERS][E_PLAYER_DATA];
 new V[MAX_VEHICLES][E_VEHICLE_DATA];
+new GZ[MAX_GANGZONES][E_GANGZONES_DATA];
 
 // mysql.ini
 new g_MySQL_Host[46],
@@ -111,4 +126,4 @@ new Float: CamerasRand[][] = {
 new GangZonesColors[] = {
 	0xFFFFFF50, 0xFFFFFF50, 0xFFFFFF50
 };
-new GangZonesIDs[58];
+// new GangZonesIDs[58];

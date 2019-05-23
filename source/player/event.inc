@@ -108,9 +108,9 @@ public OnPlayerDisconnect(playerid, reason) {
 }
 public OnPlayerSpawn(playerid) {
 	if(P[playerid][_p_in_game] == true) {
-		for(new i; i < sizeof GangZonesIDs; i++) {
-			ShowZoneForPlayer(playerid, GangZonesIDs[i], GangZonesColors[random(sizeof GangZonesColors)]);
-			CreateZoneBorders(GangZonesIDs[i]);
+		for(new i = 0; i < sizeof(GZ); i++) {
+			ShowZoneForPlayer(playerid, GZ[i][_gz_local];
+			GangZonesColors[random(sizeof GangZonesColors)]);
 		}
 		SendClientMessage(playerid, -1, "OnPlayerSpawn");
 		if (!P[playerid][_p_spawned]) {

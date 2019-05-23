@@ -14,6 +14,8 @@ public OnGameModeInit() {
 		SendRconCommand("exit");
 	    return 0;
 	}
+    mysql_pquery(g_MySQL_DB, "SELECT * FROM `gangzone`;", "OnMySQL_GangZones");
+
 	SetGameModeText(GAMEMODE_VERSION);
 	SendRconCommand("hostname "SERVER_NAME);
 	// DisableInteriorEnterExits();
@@ -168,69 +170,7 @@ public OnGameModeInit() {
     SendRconCommand("loadfs pnetstats2");
     SendRconCommand("loadfs vspawner");
     SendRconCommand("loadfs cameditor");
-
-    GangZonesIDs[0] = CreateZone(2632.8, -1852.8, 2959.3, -1668.1);
-    GangZonesIDs[1] = CreateZone(2632.8, -1668.1, 2747.7, -1393.4);
-    GangZonesIDs[2] = CreateZone(2747.7, -1668.1, 2959.3, -1498.6);
-    GangZonesIDs[3] = CreateZone(2747.7, -1498.6, 2959.3, -1120.0);
-    GangZonesIDs[4] = CreateZone(2421.0, -1628.5, 2632.8, -1454.3);
-    GangZonesIDs[5] = CreateZone(2222.5, -1628.5, 2421.0, -1494.0);
-    GangZonesIDs[6] = CreateZone(2266.2, -1494.0, 2381.6, -1372.0);
-    GangZonesIDs[7] = CreateZone(2281.4, -1372.0, 2381.6, -1135.0);
-    GangZonesIDs[8] = CreateZone(2381.6, -1454.3, 2462.1, -1135.0);
-    GangZonesIDs[9] = CreateZone(2462.1, -1454.3, 2581.7, -1135.0);
-    GangZonesIDs[10] = CreateZone(1812.6, -2179.2, 1970.6, -1852.8);
-    GangZonesIDs[11] = CreateZone(1692.6, -2179.2, 1812.6, -1842.2);
-    GangZonesIDs[12] = CreateZone(2222.5, -1852.8, 2632.8, -1722.3);
-    GangZonesIDs[13] = CreateZone(2222.5, -1722.3, 2632.8, -1628.5);
-    GangZonesIDs[14] = CreateZone(1812.6, -1449.6, 1996.9, -1350.7);
-    GangZonesIDs[15] = CreateZone(1812.6, -1350.7, 2056.8, -1100.8);
-    GangZonesIDs[16] = CreateZone(1812.6, -1852.8, 1971.6, -1742.3);
-    GangZonesIDs[17] = CreateZone(1812.6, -1742.3, 1951.6, -1602.3);
-    GangZonesIDs[18] = CreateZone(1951.6, -1742.3, 2124.6, -1602.3);
-    GangZonesIDs[19] = CreateZone(1812.6, -1602.3, 2124.6, -1449.6);
-    GangZonesIDs[20] = CreateZone(2124.6, -1742.3, 2222.5, -1494.0);
-    GangZonesIDs[21] = CreateZone(1971.6, -1852.8, 2222.5, -1742.3);
-    GangZonesIDs[22] = CreateZone(2124.6, -1494.0, 2266.2, -1449.6);
-    GangZonesIDs[23] = CreateZone(2056.8, -1372.0, 2281.4, -1210.7);
-    GangZonesIDs[24] = CreateZone(2056.8, -1210.7, 2185.3, -1126.3);
-    GangZonesIDs[25] = CreateZone(2185.3, -1210.7, 2281.4, -1154.5);
-    GangZonesIDs[26] = CreateZone(2056.8, -1449.6, 2266.2, -1372.0);
-    GangZonesIDs[27] = CreateZone(1994.3, -1100.8, 2056.8, -920.8);
-    GangZonesIDs[28] = CreateZone(2056.8, -1126.3, 2126.8, -920.8);
-    GangZonesIDs[29] = CreateZone(2185.3, -1154.5, 2281.4, -934.4);
-    GangZonesIDs[30] = CreateZone(2126.8, -1126.3, 2185.3, -934.4);
-    GangZonesIDs[31] = CreateZone(2747.7, -1120.0, 2959.3, -945.0);
-    GangZonesIDs[32] = CreateZone(2632.7, -1135.0, 2747.7, -945.0);
-    GangZonesIDs[33] = CreateZone(2281.4, -1135.0, 2632.7, -945.0);
-    GangZonesIDs[34] = CreateZone(1701.9, -1842.2, 1812.6, -1722.2);
-    GangZonesIDs[35] = CreateZone(1758.9, -1722.2, 1812.6, -1577.5);
-    GangZonesIDs[36] = CreateZone(2581.7, -1454.3, 2632.8, -1393.4);
-    GangZonesIDs[37] = CreateZone(2581.7, -1393.4, 2747.7, -1135.0);
-    GangZonesIDs[38] = CreateZone(2703.5, -2126.9, 2959.3, -1852.8);
-    GangZonesIDs[39] = CreateZone(342.6, -2173.2, 647.7, -1684.6);
-    GangZonesIDs[40] = CreateZone(72.6, -2173.2, 342.6, -1684.6);
-    GangZonesIDs[41] = CreateZone(1252.3, -1130.8, 1378.3, -1026.3);
-    GangZonesIDs[42] = CreateZone(1252.3, -1026.3, 1391.0, -926.9);
-    GangZonesIDs[43] = CreateZone(1252.3, -926.9, 1357.0, -910.1);
-    GangZonesIDs[44] = CreateZone(952.6, -1130.8, 1096.4, -937.1);
-    GangZonesIDs[45] = CreateZone(1096.4, -1130.8, 1252.3, -1026.3);
-    GangZonesIDs[46] = CreateZone(1692.6, -1971.8, 1812.6, -1932.8);
-    GangZonesIDs[47] = CreateZone(647.7, -2173.2, 930.2, -1804.2);
-    GangZonesIDs[48] = CreateZone(930.2, -2006.7, 1073.2, -1804.2);
-    GangZonesIDs[49] = CreateZone(851.4, -1804.2, 1046.1, -1577.5);
-    GangZonesIDs[50] = CreateZone(1161.5, -1722.2, 1323.9, -1577.5);
-    GangZonesIDs[51] = CreateZone(1046.1, -1722.2, 1161.5, -1577.5);
-    GangZonesIDs[52] = CreateZone(787.4, -1130.8, 952.6, -954.6);
-    GangZonesIDs[53] = CreateZone(1970.6, -2179.2, 2089.0, -1852.8);
-    GangZonesIDs[54] = CreateZone(2089.0, -2235.8, 2201.8, -1989.9);
-    GangZonesIDs[55] = CreateZone(2089.0, -1989.9, 2324.0, -1852.8);
-    GangZonesIDs[56] = CreateZone(2201.8, -2095.0, 2324.0, -1989.9);
-    GangZonesIDs[57] = CreateZone(2324.0, -2059.2, 2541.7, -1852.8);
-    for(new i; i < sizeof GangZonesIDs; i++) {
-		CreateZoneBorders(GangZonesIDs[i]);
-	}
-
+    
     WeatherChanger();
     weatherTimer = SetTimer("WeatherChanger", randomEx(1500000, 3600000), true);
     customtimeTimer = SetTimer("CustomTimeTimer", 1000, true);
