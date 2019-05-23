@@ -16,7 +16,13 @@ stock randomEx(min, max) {
 }
 stock Log(const fmat[], va_args<>) {
 	if (g_Log_Level == 0) return true;
-	print(va_return(fmat, va_start<1>));
+	else if (g_Log_Level == 1) {
+		print(va_return(fmat, va_start<1>));
+	}
+	else if (g_Log_Level == 2) {
+		Message_ToAdmins(-1, va_return(fmat, va_start<1>));
+		print(va_return(fmat, va_start<1>));
+	}
 	return true;
 }
 stock Message_ToAdmins(color, const fmat[], va_args<>) {
