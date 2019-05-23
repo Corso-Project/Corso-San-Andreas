@@ -72,7 +72,8 @@ enum E_PLAYER_DATA
 
 enum E_VEHICLE_DATA
 {
-	v_id,
+	_v_id,
+	//
 	bool: v_door,
 };
 new P[MAX_PLAYERS][E_PLAYER_DATA];

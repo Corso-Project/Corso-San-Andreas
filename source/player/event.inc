@@ -153,10 +153,5 @@ public OnPlayerClickMap(playerid, Float: fX, Float: fY, Float: fZ) {
 	return true;
 }
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) {
-	if (V[vehicleid][v_door] == false) {
-		ClearAnimations(playerid);
-		SendClientMessage(playerid, -1, "Автомобиль закрыт.");
-		return true;
-	}
     return true;
 }

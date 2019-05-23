@@ -222,3 +222,27 @@ CMD:irc(playerid, params[]) {
 	}
 	return true;
 }
+CMD:lockadmin(playerid, params[]) {
+	if(P[playerid][_p_in_game] == false) return 1;
+	if(P[playerid][p_access] < 1) return true;
+	
+	new Float: x,
+		Float: y,
+		Float: z,
+		engine, lights, alarm, doors, bonnet, boot, objective;
+	foreach(new vehicleid : Vehicle) {
+		GetVehiclePos(vehicleid, x, y, z);
+		if (IsPlayerInRangeOfPoint(playerid, 10.0, x, y, z))
+        {
+			GetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot, objective);
+			if (doors == 1) {
+				SetVehicleParamsEx(vehicleid, engine, lights, alarm, 0, bonnet, boot, objective);
+				V[vehicleid][v_door] = true;
+			} else {
+				SetVehicleParamsEx(vehicleid, engine, lights, alarm, 1, bonnet, boot, objective);
+				V[vehicleid][v_door] = false;
+			}
+		}
+	}
+	return true;
+}
