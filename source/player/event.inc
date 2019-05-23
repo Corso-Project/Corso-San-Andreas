@@ -82,7 +82,7 @@ public OnPlayerRequestSpawn(playerid) {
 public OnPlayerConnect(playerid) {
 	TogglePlayerSpectating(playerid, 1);
 	SetPlayerTime(playerid, Hour, Minute);
-	Dialog_Message(playerid, "Загрузка...","{FFFFFF}Мы рады вас видеть на нашем сервере {b3f9b0}", "Ok");
+	Dialog_Message(playerid, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...","{FFFFFF}пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ {b3f9b0}", "Ok");
     connect_player_wait[playerid] = SetTimerEx("AutoTimer", 3000, true, "i", playerid);
     return true;
 }
@@ -109,8 +109,7 @@ public OnPlayerDisconnect(playerid, reason) {
 public OnPlayerSpawn(playerid) {
 	if(P[playerid][_p_in_game] == true) {
 		for(new i = 0; i < sizeof(GZ); i++) {
-			ShowZoneForPlayer(playerid, GZ[i][_gz_local];
-			GangZonesColors[random(sizeof GangZonesColors)]);
+			ShowZoneForPlayer(playerid, GZ[i][_gz_local], GangZonesColors[random(sizeof GangZonesColors)]);
 		}
 		SendClientMessage(playerid, -1, "OnPlayerSpawn");
 		if (!P[playerid][_p_spawned]) {
