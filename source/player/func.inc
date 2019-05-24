@@ -9,11 +9,13 @@ stock Show_Stats(playerid, targetid) {
 	format(string,sizeof(string), "+ %f",KD);
 	new stringStats[84+24+2+2+9+9];
 	format(stringStats, sizeof(stringStats),
-	"{FFFFFF}Никнейм: %s\n\
+	"{FFFFFF}ID аккаунта: %i\n\
+	Никнейм: %s\n\
 	Убийств: %i\n\
 	Смертей: %i\n\
 	Денег: %i\n\
 	K/D: %0.2f",
+	P[targetid][p_uid],
 	P[targetid][p_name],
 	P[targetid][p_kills],
 	P[targetid][p_deaths],
