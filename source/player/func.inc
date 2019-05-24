@@ -103,3 +103,24 @@ stock Get_TeamName(playerid) {
 	}
 	return dests;
 }
+stock Show_PlayerLic(playerid, targetid){
+	new output[482+1],lic_car[26],lic_aircraft[26],lic_boat[26],lic_moto[26],lic_weapon[26],lic_freight[26],lic_helicopter[26];
+	lic_car = (P[playerid][p_lic_car] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	lic_aircraft = (P[playerid][p_lic_aircraft] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	lic_boat = (P[playerid][p_lic_boat] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	lic_moto = (P[playerid][p_lic_moto] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	lic_weapon = (P[playerid][p_lic_weapon] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	lic_freight = (P[playerid][p_lic_freight] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	lic_helicopter = (P[playerid][p_lic_helicopter] == 1) ? "{33AA33}В наличии{FFFFFF}" : "{AA3333}Нет{FFFFFF}";
+	format(output, sizeof(output),
+		"{FFFFFF}Водительские права:\t\t\t\t\t%s\n\
+		Лицензия пилотирования самолётом:\t\t\t%s\n\
+		Лицензия на водный транспорт:\t\t\t%s\n\
+		Лицензия на вождения спорт байка:\t\t\t%s\n\
+		Лицензия на оружие:\t\t\t\t\t%s\n\
+		Лицензия на грузо-перевозку:\t\t\t\t%s\n\
+		Лицензия на пилотирования вертолётом:\t\t%s",
+		lic_car,lic_aircraft,lic_boat,lic_moto,lic_weapon,lic_freight,lic_helicopter);
+	Dialog_Message(targetid, "Лицензии", output, "Ок");
+	// P[playerid][_p_dialog] = true;
+}

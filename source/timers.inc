@@ -26,6 +26,14 @@ public AutoTimer(playerid) {
     orm_addvar_string(ormid, P[playerid][p_reg_ip], 46, "Reg_IP");
     orm_addvar_string(ormid, P[playerid][p_last_ip], 46, "Last_IP");
 
+    orm_addvar_int(ormid, P[playerid][p_lic_moto], "Lic_Moto");
+	orm_addvar_int(ormid, P[playerid][p_lic_car], "Lic_Car");
+	orm_addvar_int(ormid, P[playerid][p_lic_freight], "Lic_Freight");
+	orm_addvar_int(ormid, P[playerid][p_lic_boat], "Lic_Boat");
+	orm_addvar_int(ormid, P[playerid][p_lic_helicopter], "Lic_Helicopter");
+	orm_addvar_int(ormid, P[playerid][p_lic_aircraft], "Lic_Aircraft");
+	orm_addvar_int(ormid, P[playerid][p_lic_weapon], "Lic_Weapon");
+
     orm_addvar_string(ormid, P[playerid][p_settings], 10, "Settings");
 
     orm_addvar_string(ormid, P[playerid][p_last_pos], 45, "Last_Pos");

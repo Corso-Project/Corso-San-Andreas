@@ -64,6 +64,14 @@ enum E_PLAYER_DATA
 	p_reg_ip[46],
 	p_last_ip[46],
 
+	p_lic_moto,
+	p_lic_car,
+	p_lic_freight,
+	p_lic_boat,
+	p_lic_helicopter,
+	p_lic_aircraft,
+	p_lic_weapon,
+
 	// settings
 	p_settings[10],
 	p_saveLastPos,

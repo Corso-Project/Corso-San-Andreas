@@ -82,7 +82,7 @@ public OnPlayerRequestSpawn(playerid) {
 public OnPlayerConnect(playerid) {
 	TogglePlayerSpectating(playerid, 1);
 	SetPlayerTime(playerid, Hour, Minute);
-	Dialog_Message(playerid, "Р—Р°РіСЂСѓР·РєР°...","{FFFFFF}РњС‹ СЂР°РґС‹ РІР°СЃ РІРёРґРµС‚СЊ РЅР° РЅР°С€РµРј СЃРµСЂРІРµСЂРµ {b3f9b0}", "Ok");
+	Dialog_Message(playerid, "Загрузка...","{FFFFFF}Мы рады вас видеть на нашем сервере {b3f9b0}", "Ok");
     connect_player_wait[playerid] = SetTimerEx("AutoTimer", 3000, true, "i", playerid);
     return true;
 }
@@ -152,5 +152,9 @@ public OnPlayerClickMap(playerid, Float: fX, Float: fY, Float: fZ) {
 	return true;
 }
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) {
+	if(Vehicle_IsPlayerWithLicense(GetVehicleModel(vehicleid), playerid) == 0)
+	{
+		return SendClientMessage(playerid, 0xB22222FF, "[Справка]: {FFFFFF}У вас нет опыта и лицензии управления данным транспортным средством!");
+	}
     return true;
 }

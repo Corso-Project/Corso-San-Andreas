@@ -225,7 +225,7 @@ CMD:irc(playerid, params[]) {
 CMD:lockadmin(playerid, params[]) {
 	if(P[playerid][_p_in_game] == false) return 1;
 	if(P[playerid][p_access] < 1) return true;
-	
+
 	new Float: x,
 		Float: y,
 		Float: z,
@@ -246,3 +246,10 @@ CMD:lockadmin(playerid, params[]) {
 	}
 	return true;
 }
+CMD:lic(playerid, params[])
+{
+	if(P[playerid][_p_in_game] == false) return 1;
+	Show_PlayerLic(playerid, playerid);
+    return 1;
+}
+alias:lic("licenses","showlicense","showlic");
